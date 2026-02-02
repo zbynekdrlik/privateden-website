@@ -147,5 +147,17 @@
   </head>
   <body>
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+    <script>
+      new MutationObserver(function(mutations, observer) {
+        document.querySelectorAll('button').forEach(function(btn) {
+          if (btn.textContent.trim() === 'Sign In with GitHub') {
+            btn.textContent = 'Prihlásiť sa';
+          }
+          if (btn.textContent.trim() === 'Sign In with GitHub Using Token') {
+            btn.textContent = 'Prihlásiť sa tokenom';
+          }
+        });
+      }).observe(document.body, { childList: true, subtree: true });
+    </script>
   </body>
 </html>
