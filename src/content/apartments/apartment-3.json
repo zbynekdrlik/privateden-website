@@ -1,0 +1,37 @@
+{
+  "id": "apartment-3",
+  "slug": "apartment-3",
+  "order": 3,
+  "name": {
+    "sk": "Apartmán č. 3",
+    "pl": "Apartament nr 3",
+    "en": "Apartment #3"
+  },
+  "description": {
+    "sk": "Veľký apartmán s dvoma spálňami, vhodný pre väčšie rodiny. Moderná kuchynka a pohodlná kúpeľňa.",
+    "pl": "Duży apartament z dwoma sypialniami, odpowiedni dla większych rodzin. Nowoczesny aneks kuchenny i wygodna łazienka.",
+    "en": "Large apartment with two bedrooms, suitable for larger families. Modern kitchenette and comfortable bathroom."
+  },
+  "capacity": 5,
+  "capacityNote": { "sk": "5 osôb", "pl": "5 osób", "en": "5 persons" },
+  "bedroomCount": 2,
+  "rooms": [
+    {
+      "type": "bedroom",
+      "beds": [
+        { "type": "double", "count": 1 },
+        { "type": "single", "count": 1 }
+      ]
+    },
+    { "type": "bedroom", "beds": [{ "type": "double", "count": 1 }] },
+    { "type": "kitchenette" },
+    { "type": "bathroom" }
+  ],
+  "priceRange": { "min": 75, "max": 75 },
+  "mainImage": "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&h=600&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop"
+  ],
+  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+}

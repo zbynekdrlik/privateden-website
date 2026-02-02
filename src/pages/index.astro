@@ -1,0 +1,34 @@
+---
+// Root page - redirects to detected browser language
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Privat Eden - Redirecting...</title>
+    <script is:inline>
+      (function() {
+        var supported = ['sk', 'pl', 'en'];
+        var defaultLang = 'sk';
+        var langs = navigator.languages || [navigator.language || ''];
+        var detected = defaultLang;
+
+        for (var i = 0; i < langs.length; i++) {
+          var code = langs[i].substring(0, 2).toLowerCase();
+          if (supported.indexOf(code) !== -1) {
+            detected = code;
+            break;
+          }
+        }
+
+        window.location.replace('/' + detected + '/');
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/sk/" />
+    </noscript>
+  </head>
+  <body>
+    <p>Presmerovanie... / Redirecting... / Przekierowanie...</p>
+  </body>
+</html>

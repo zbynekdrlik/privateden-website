@@ -1,0 +1,337 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t, getAllLangPaths, type Lang } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return getAllLangPaths();
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const i18n = t(lang);
+
+const galleryImages = [
+  {
+    src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop',
+    alt: 'Modern house exterior with garden',
+    category: 'exterior',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
+    alt: 'Accommodation building front view',
+    category: 'exterior',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
+    alt: 'Property with green surroundings',
+    category: 'exterior',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop',
+    alt: 'Cozy bedroom interior',
+    category: 'interior',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop',
+    alt: 'Modern kitchen with dining area',
+    category: 'interior',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop',
+    alt: 'Living room with mountain view',
+    category: 'interior',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+    alt: 'Mountain panorama at sunrise',
+    category: 'surroundings',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=600&fit=crop',
+    alt: 'Lake surrounded by mountains',
+    category: 'surroundings',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop',
+    alt: 'Forest trail in nature',
+    category: 'surroundings',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=600&fit=crop',
+    alt: 'Skiing on snowy slopes',
+    category: 'activities',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop',
+    alt: 'Hiking through mountain trails',
+    category: 'activities',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&h=600&fit=crop',
+    alt: 'Outdoor campfire and relaxation',
+    category: 'activities',
+  },
+];
+
+const categoryKeys = ['all', 'exterior', 'interior', 'surroundings', 'activities'] as const;
+const categories: Record<string, string> = i18n.gallery.categories;
+---
+
+<BaseLayout title={i18n.gallery.pageTitle} lang={lang} description={i18n.gallery.pageDescription}>
+
+  <!-- Page Header -->
+  <section class="py-16 md:py-20 bg-[var(--color-background-alt)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-4" style="font-family: 'Playfair Display', serif;">
+        {i18n.gallery.pageTitle}
+      </h1>
+      <p class="text-lg text-[var(--color-text-light)] max-w-2xl mx-auto">
+        {i18n.gallery.pageDescription}
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter Buttons + Gallery Grid -->
+  <section class="py-12 md:py-16 bg-[var(--color-background)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-3 mb-10" id="gallery-filters">
+        {categoryKeys.map((key) => (
+          <button
+            type="button"
+            class:list={[
+              'gallery-filter-btn px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 border',
+              key === 'all'
+                ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
+                : 'bg-white text-[var(--color-text-light)] border-[var(--color-text-muted)]/20 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]',
+            ]}
+            data-filter={key}
+          >
+            {categories[key]}
+          </button>
+        ))}
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6" id="gallery-grid">
+        {galleryImages.map((image, index) => (
+          <div
+            class="gallery-item group relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300"
+            data-category={image.category}
+            data-index={index}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <span class="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-[var(--color-text)]">
+                {categories[image.category]}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Lightbox Overlay -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-label={i18n.gallery.pageTitle}
+  >
+    <!-- Close Button -->
+    <button
+      type="button"
+      id="lightbox-close"
+      class="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+      aria-label={i18n.common.close}
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Previous Button -->
+    <button
+      type="button"
+      id="lightbox-prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+      aria-label={i18n.common.previous}
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button
+      type="button"
+      id="lightbox-next"
+      class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
+      aria-label={i18n.common.next}
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Image Container -->
+    <div class="max-w-5xl max-h-[85vh] mx-4 flex items-center justify-center">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+      />
+    </div>
+
+    <!-- Counter -->
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium">
+      <span id="lightbox-counter"></span>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- Filter Logic ---
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.gallery-filter-btn');
+    const galleryItems = document.querySelectorAll<HTMLDivElement>('.gallery-item');
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter') || 'all';
+
+        // Update active button styles
+        filterButtons.forEach((b) => {
+          b.classList.remove('bg-[var(--color-primary)]', 'text-white', 'border-[var(--color-primary)]');
+          b.classList.add('bg-white', 'text-[var(--color-text-light)]', 'border-[var(--color-text-muted)]/20');
+        });
+        btn.classList.remove('bg-white', 'text-[var(--color-text-light)]', 'border-[var(--color-text-muted)]/20');
+        btn.classList.add('bg-[var(--color-primary)]', 'text-white', 'border-[var(--color-primary)]');
+
+        // Show / hide items
+        galleryItems.forEach((item) => {
+          const cat = item.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+
+        // Reset lightbox visible indices after filtering
+        updateVisibleIndices();
+      });
+    });
+
+    // --- Lightbox Logic ---
+    const lightbox = document.getElementById('lightbox') as HTMLDivElement;
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const lightboxClose = document.getElementById('lightbox-close') as HTMLButtonElement;
+    const lightboxPrev = document.getElementById('lightbox-prev') as HTMLButtonElement;
+    const lightboxNext = document.getElementById('lightbox-next') as HTMLButtonElement;
+    const lightboxCounter = document.getElementById('lightbox-counter') as HTMLSpanElement;
+
+    let visibleItems: HTMLDivElement[] = [];
+    let currentIndex = 0;
+
+    function updateVisibleIndices() {
+      visibleItems = Array.from(galleryItems).filter(
+        (item) => !item.classList.contains('hidden')
+      );
+    }
+
+    function openLightbox(index: number) {
+      currentIndex = index;
+      updateLightboxImage();
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    function updateLightboxImage() {
+      if (visibleItems.length === 0) return;
+      const item = visibleItems[currentIndex];
+      const img = item.querySelector('img');
+      if (img) {
+        // Use a higher-resolution version for the lightbox
+        lightboxImg.src = img.src.replace('w=800&h=600', 'w=1600&h=1200');
+        lightboxImg.alt = img.alt;
+      }
+      lightboxCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+      updateLightboxImage();
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % visibleItems.length;
+      updateLightboxImage();
+    }
+
+    // Initialize visible items
+    updateVisibleIndices();
+
+    // Click on gallery item to open lightbox
+    galleryItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        updateVisibleIndices();
+        const idx = visibleItems.indexOf(item);
+        if (idx !== -1) {
+          openLightbox(idx);
+        }
+      });
+    });
+
+    // Close button
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    // Previous / Next buttons
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPrev();
+    });
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showNext();
+    });
+
+    // Click on backdrop to close
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('hidden')) return;
+
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        showPrev();
+      } else if (e.key === 'ArrowRight') {
+        showNext();
+      }
+    });
+  });
+</script>

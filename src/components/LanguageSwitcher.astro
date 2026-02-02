@@ -1,0 +1,61 @@
+---
+import { SUPPORTED_LANGS, type Lang, t } from '../utils/i18n';
+
+interface Props {
+  currentLang: Lang;
+  currentPath: string;
+}
+
+const { currentLang, currentPath } = Astro.props;
+const basePath = currentPath.replace(/^\/(sk|pl|en)/, '') || '/';
+
+const languages = SUPPORTED_LANGS.map(lang => ({
+  code: lang,
+  name: t(lang).meta.langName,
+  flag: t(lang).meta.langFlag,
+  href: `/${lang}${basePath}`,
+  active: lang === currentLang
+}));
+
+const current = languages.find(l => l.active)!;
+---
+
+<div class="relative" id="lang-switcher">
+  <button
+    id="lang-toggle"
+    class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--color-text-muted)]/30 hover:border-[var(--color-primary)] transition-colors duration-200 text-[var(--color-text-light)]"
+    aria-label="Switch language"
+  >
+    <span class="text-base">{current.flag}</span>
+    <span class="text-sm font-medium uppercase">{currentLang}</span>
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div id="lang-dropdown" class="hidden absolute right-0 top-full mt-1 bg-white rounded-xl shadow-lg border border-[var(--color-text-muted)]/20 overflow-hidden z-50 min-w-[140px]">
+    {languages.filter(l => !l.active).map(lang => (
+      <a
+        href={lang.href}
+        class="flex items-center gap-2.5 px-4 py-2.5 hover:bg-[var(--color-background-alt)] transition-colors duration-200 text-[var(--color-text-light)]"
+      >
+        <span class="text-base">{lang.flag}</span>
+        <span class="text-sm font-medium">{lang.name}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const toggle = document.getElementById('lang-toggle');
+  const dropdown = document.getElementById('lang-dropdown');
+
+  toggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown?.classList.toggle('hidden');
+  });
+
+  document.addEventListener('click', () => {
+    dropdown?.classList.add('hidden');
+  });
+</script>

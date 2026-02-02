@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { t, getAllLangPaths, getLocalizedPath, type Lang } from '../../../utils/i18n';
+import { getAllApartments } from '../../../utils/apartments';
+
+export function getStaticPaths() {
+  return getAllLangPaths();
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const i18n = t(lang);
+const apartments = getAllApartments();
+
+// Pre-compute description excerpts in frontmatter to avoid TS generic syntax in template
+const descriptionExcerpts: Record<string, string> = {};
+for (const apt of apartments) {
+  const full = apt.description[lang] || '';
+  descriptionExcerpts[apt.id] = full.length > 120 ? full.slice(0, 120) + '...' : full;
+}
+---
+
+<BaseLayout title={i18n.apartments.pageTitle} lang={lang} description={i18n.apartments.pageDescription}>
+
+  <!-- Page Header -->
+  <section class="relative py-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-white/10 blur-3xl"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="font-family: 'Playfair Display', serif;">
+        {i18n.apartments.pageTitle}
+      </h1>
+      <p class="text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
+        {i18n.apartments.pageDescription}
+      </p>
+    </div>
+  </section>
+
+  <!-- Apartments Grid -->
+  <section class="py-16 md:py-24 bg-[var(--color-background)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {apartments.map(apt => (
+          <a
+            href={getLocalizedPath(lang, `/apartments/${apt.slug}`)}
+            class="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--color-text-muted)]/10 hover:-translate-y-1"
+          >
+            {/* Image */}
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={apt.mainImage}
+                alt={apt.name[lang]}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              {/* Price badge */}
+              <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-md">
+                <span class="text-[var(--color-primary)] font-bold text-sm">
+                  {i18n.homepage.fromPrice} {apt.priceRange.min}€
+                </span>
+                <span class="text-[var(--color-text-muted)] text-xs ml-1">{i18n.homepage.perNight}</span>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div class="flex flex-col flex-grow p-6 lg:p-7">
+              {/* Name */}
+              <h2 class="text-xl lg:text-2xl font-bold text-[var(--color-text)] mb-3 group-hover:text-[var(--color-primary)] transition-colors duration-200">
+                {apt.name[lang]}
+              </h2>
+
+              {/* Meta info */}
+              <div class="flex flex-wrap items-center gap-4 text-sm text-[var(--color-text-light)] mb-4">
+                {/* Capacity */}
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-[var(--color-primary)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>{apt.capacity} {i18n.apartments.persons}</span>
+                </span>
+
+                {/* Bedrooms */}
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-[var(--color-primary)] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" />
+                  </svg>
+                  <span>{apt.bedroomCount} {apt.bedroomCount > 1 ? i18n.apartments.bedroomPlural : i18n.apartments.bedroom}</span>
+                </span>
+              </div>
+
+              {/* Capacity note */}
+              {apt.capacityNote[lang] && (
+                <div class="inline-flex items-center gap-1.5 text-xs text-[var(--color-text-muted)] bg-[var(--color-background-alt)] rounded-full px-3 py-1 mb-4 w-fit">
+                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {apt.capacityNote[lang]}
+                </div>
+              )}
+
+              {/* Description excerpt */}
+              <p class="text-sm text-[var(--color-text-light)] leading-relaxed mb-6 flex-grow">
+                {descriptionExcerpts[apt.id]}
+              </p>
+
+              {/* Features pills */}
+              {apt.features.length > 0 && (
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {apt.features.slice(0, 4).map(feature => (
+                    <span class="text-xs font-medium text-[var(--color-primary)] bg-[var(--color-primary-light)] rounded-full px-3 py-1">
+                      {i18n.apartments[feature] || feature}
+                    </span>
+                  ))}
+                  {apt.features.length > 4 && (
+                    <span class="text-xs font-medium text-[var(--color-text-muted)] bg-[var(--color-background-alt)] rounded-full px-3 py-1">
+                      +{apt.features.length - 4}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {/* Footer: price + CTA */}
+              <div class="flex items-center justify-between pt-4 border-t border-[var(--color-text-muted)]/10 mt-auto">
+                <div>
+                  <span class="text-[var(--color-primary)] font-bold text-lg">{apt.priceRange.min} - {apt.priceRange.max}€</span>
+                  <span class="text-xs text-[var(--color-text-muted)] block">{i18n.apartments.pricePerNight}</span>
+                </div>
+                <span class="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] group-hover:translate-x-1 transition-transform duration-200">
+                  {i18n.homepage.viewDetails}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section class="py-16 bg-[var(--color-background-alt)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-4">
+        {i18n.nav.bookNow}
+      </h2>
+      <p class="text-[var(--color-text-light)] mb-8 max-w-xl mx-auto">
+        {i18n.apartments.pageDescription}
+      </p>
+      <a
+        href={getLocalizedPath(lang, '/contact')}
+        class="inline-flex items-center px-8 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold rounded-full transition-colors duration-200 text-lg"
+      >
+        {i18n.hero.secondaryCtaText}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

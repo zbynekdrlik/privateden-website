@@ -1,0 +1,42 @@
+{
+  "id": "apartment-1",
+  "slug": "apartment-1",
+  "order": 1,
+  "name": {
+    "sk": "Apartmán č. 1",
+    "pl": "Apartament nr 1",
+    "en": "Apartment #1"
+  },
+  "description": {
+    "sk": "Priestranný apartmán pre rodiny s jednou spálňou, obývačkou a kompletne vybavenou kuchynkou. Ideálny pre rodiny s deťmi.",
+    "pl": "Przestronny apartament dla rodzin z jedną sypialnią, salonem i w pełni wyposażonym aneksem kuchennym. Idealny dla rodzin z dziećmi.",
+    "en": "Spacious apartment for families with one bedroom, living room and fully equipped kitchenette. Perfect for families with children."
+  },
+  "capacity": 5,
+  "capacityNote": {
+    "sk": "4 + 1 prístelka",
+    "pl": "4 + 1 dostawka",
+    "en": "4 + 1 extra bed"
+  },
+  "bedroomCount": 1,
+  "rooms": [
+    {
+      "type": "bedroom",
+      "beds": [
+        { "type": "double", "count": 1 },
+        { "type": "bunk", "count": 1 }
+      ]
+    },
+    { "type": "livingRoom", "extras": ["tv", "sofa"] },
+    { "type": "kitchenette" },
+    { "type": "bathroom" }
+  ],
+  "priceRange": { "min": 50, "max": 75 },
+  "mainImage": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop"
+  ],
+  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+}

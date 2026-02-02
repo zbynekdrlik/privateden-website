@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "name": "Martin K.",
+      "text": {
+        "sk": "Krásne miesto pre rodiny. Deti si užili ihrisko a trampolínu, my sme si oddýchli v saune. Férovú cenu za prenájom prispôsobili počtu osôb. Určite sa vrátime!",
+        "pl": "Piękne miejsce dla rodzin. Dzieci bawiły się na placu zabaw i trampolinie, a my odpoczywaliśmy w saunie. Uczciwa cena dostosowana do liczby osób. Na pewno wrócimy!",
+        "en": "Beautiful place for families. Kids enjoyed the playground and trampoline, we relaxed in the sauna. Fair pricing adjusted to the number of guests. Will definitely return!"
+      },
+      "rating": 5,
+      "date": "2025-08"
+    },
+    {
+      "name": "Anna S.",
+      "text": {
+        "sk": "Výborná poloha — Tatralandia 7 minút autom, Jasná 20 minút. Apartmány sú čisté a útulné, vidiecky štýl sa nám veľmi páčil.",
+        "pl": "Doskonała lokalizacja — Tatralandia 7 minut samochodem, Jasná 20 minut. Apartamenty są czyste i przytulne, styl wiejski bardzo nam się podobał.",
+        "en": "Excellent location — Tatralandia 7 minutes by car, Jasná 20 minutes. Apartments are clean and cozy, we loved the countryside style."
+      },
+      "rating": 5,
+      "date": "2025-07"
+    },
+    {
+      "name": "Piotr W.",
+      "text": {
+        "sk": "Pani domáca je veľmi milá a ochotná. LRC karta bola skvelý bonus — ušetrili sme na vstupnom do aquaparku aj jaskyne.",
+        "pl": "Gospodyni jest bardzo miła i pomocna. Karta LRC to świetny bonus — zaoszczędziliśmy na biletach do aquaparku i jaskini.",
+        "en": "The hostess is very kind and helpful. The LRC card was a great bonus — we saved on aquapark and cave entrance fees."
+      },
+      "rating": 5,
+      "date": "2025-06"
+    }
+  ]
+}

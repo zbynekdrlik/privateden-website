@@ -1,0 +1,31 @@
+{
+  "id": "apartment-2",
+  "slug": "apartment-2",
+  "order": 2,
+  "name": {
+    "sk": "Apartmán č. 2",
+    "pl": "Apartament nr 2",
+    "en": "Apartment #2"
+  },
+  "description": {
+    "sk": "Komfortný apartmán s dvoma samostatnými spálňami. Perfektný pre páry alebo menšie skupiny priateľov.",
+    "pl": "Komfortowy apartament z dwoma oddzielnymi sypialniami. Idealny dla par lub mniejszych grup przyjaciół.",
+    "en": "Comfortable apartment with two separate bedrooms. Perfect for couples or small groups of friends."
+  },
+  "capacity": 4,
+  "capacityNote": { "sk": "4 osoby", "pl": "4 osoby", "en": "4 persons" },
+  "bedroomCount": 2,
+  "rooms": [
+    { "type": "bedroom", "beds": [{ "type": "double", "count": 1 }] },
+    { "type": "bedroom", "beds": [{ "type": "double", "count": 1 }] },
+    { "type": "kitchenette" },
+    { "type": "bathroom" }
+  ],
+  "priceRange": { "min": 60, "max": 85 },
+  "mainImage": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&h=600&fit=crop"
+  ],
+  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+}

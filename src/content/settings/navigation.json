@@ -1,0 +1,15 @@
+{
+  "mainNav": [
+    { "key": "home", "href": "/", "enabled": true },
+    { "key": "apartments", "href": "/apartments", "enabled": true },
+    { "key": "gallery", "href": "/gallery", "enabled": true },
+    { "key": "surroundings", "href": "/surroundings", "enabled": true },
+    { "key": "contact", "href": "/contact", "enabled": true }
+  ],
+  "ctaButton": {
+    "key": "bookNow",
+    "href": "/contact",
+    "enabled": true
+  },
+  "logo": "/images/logo.svg"
+}

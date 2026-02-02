@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t, getAllLangPaths, getLocalizedPath, type Lang } from '../../utils/i18n';
+import { getAllApartments } from '../../utils/apartments';
+import generalSettings from '../../content/settings/general.json';
+import heroData from '../../content/homepage/hero.json';
+import sectionsData from '../../content/homepage/sections.json';
+import attractionsData from '../../content/surroundings/attractions.json';
+import testimonialsData from '../../content/testimonials/testimonials.json';
+
+export function getStaticPaths() {
+  return getAllLangPaths();
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const i18n = t(lang);
+const apartments = getAllApartments();
+const sections = sectionsData.sections.filter(s => s.enabled).sort((a, b) => a.order - b.order);
+const featuredAttractions = attractionsData.attractions.slice(0, 3);
+---
+
+<BaseLayout title={i18n.hero.subtitle} lang={lang} description={i18n.hero.description}>
+
+  <!-- HERO -->
+  {heroData.enabled && (
+    <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0">
+        <img
+          src={heroData.heroImage}
+          alt="Privát Eden"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+      </div>
+      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
+        <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">
+          {i18n.hero.title}
+        </h1>
+        <p class="text-xl md:text-2xl font-light mb-3 text-white/90">
+          {i18n.hero.subtitle}
+        </p>
+        <p class="text-base md:text-lg text-white/75 max-w-2xl mx-auto mb-10">
+          {i18n.hero.description}
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href={getLocalizedPath(lang, '/apartments')}
+            class="px-8 py-4 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white font-semibold rounded-full transition-colors duration-200 text-lg"
+          >
+            {i18n.hero.ctaText}
+          </a>
+          <a
+            href={getLocalizedPath(lang, '/contact')}
+            class="px-8 py-4 bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white font-semibold rounded-full border border-white/30 transition-colors duration-200 text-lg"
+          >
+            {i18n.hero.secondaryCtaText}
+          </a>
+        </div>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/60">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </section>
+  )}
+
+  <!-- DYNAMIC SECTIONS -->
+  {sections.map(section => {
+    if (section.type === 'apartments') return (
+      <!-- APARTMENTS SECTION -->
+      <section class="py-20 bg-[var(--color-background)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">{i18n.homepage.apartmentsHeading}</h2>
+            <p class="text-lg text-[var(--color-text-light)] max-w-2xl mx-auto">{i18n.homepage.apartmentsDescription}</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {apartments.map(apt => (
+              <a href={getLocalizedPath(lang, `/apartments/${apt.slug}`)} class="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--color-text-muted)]/10">
+                <div class="aspect-[4/3] overflow-hidden">
+                  <img src={apt.mainImage} alt={apt.name[lang]} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-[var(--color-text)] mb-2">{apt.name[lang]}</h3>
+                  <div class="flex items-center gap-4 text-sm text-[var(--color-text-light)] mb-3">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                      {apt.capacity} {i18n.homepage.persons}
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4" /></svg>
+                      {apt.bedroomCount} {apt.bedroomCount > 1 ? i18n.apartments.bedroomPlural : i18n.apartments.bedroom}
+                    </span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-[var(--color-primary)] font-bold text-lg">
+                      {i18n.homepage.fromPrice} {apt.priceRange.min}€ <span class="text-sm font-normal text-[var(--color-text-muted)]">{i18n.homepage.perNight}</span>
+                    </span>
+                    <span class="text-sm font-medium text-[var(--color-primary)] group-hover:translate-x-1 transition-transform duration-200">
+                      {i18n.homepage.viewDetails} →
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div class="text-center mt-10">
+            <a href={getLocalizedPath(lang, '/apartments')} class="inline-flex items-center px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white rounded-full font-medium transition-colors duration-200">
+              {i18n.homepage.allApartments} →
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+
+    if (section.type === 'amenities') return (
+      <!-- AMENITIES SECTION -->
+      <section class="py-20 bg-[var(--color-background-alt)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">{i18n.homepage.amenitiesHeading}</h2>
+            <p class="text-lg text-[var(--color-text-light)]">{i18n.homepage.amenitiesDescription}</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Outdoor */}
+            <div class="bg-white p-6 rounded-2xl text-center shadow-sm">
+              <div class="w-14 h-14 bg-[var(--color-primary-light)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-7 h-7 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /></svg>
+              </div>
+              <h3 class="font-semibold text-[var(--color-text)] mb-2">{i18n.amenities.outdoor}</h3>
+              <p class="text-sm text-[var(--color-text-light)]">{i18n.amenities.bonfire}, {i18n.amenities.grill}, {i18n.amenities.gazebo}</p>
+            </div>
+            {/* Children */}
+            <div class="bg-white p-6 rounded-2xl text-center shadow-sm">
+              <div class="w-14 h-14 bg-[var(--color-accent-light)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-7 h-7 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <h3 class="font-semibold text-[var(--color-text)] mb-2">{i18n.amenities.children}</h3>
+              <p class="text-sm text-[var(--color-text-light)]">{i18n.amenities.playground}, {i18n.amenities.trampoline}, {i18n.amenities.sandbox}</p>
+            </div>
+            {/* Recreation */}
+            <div class="bg-white p-6 rounded-2xl text-center shadow-sm">
+              <div class="w-14 h-14 bg-[var(--color-primary-light)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-7 h-7 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+              </div>
+              <h3 class="font-semibold text-[var(--color-text)] mb-2">{i18n.amenities.recreation}</h3>
+              <p class="text-sm text-[var(--color-text-light)]">{i18n.amenities.sauna}, {i18n.amenities.hotTub}, {i18n.amenities.billiards}</p>
+            </div>
+            {/* Dining */}
+            <div class="bg-white p-6 rounded-2xl text-center shadow-sm">
+              <div class="w-14 h-14 bg-[var(--color-accent-light)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-7 h-7 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <h3 class="font-semibold text-[var(--color-text)] mb-2">{i18n.amenities.dining}</h3>
+              <p class="text-sm text-[var(--color-text-light)]">{i18n.amenities.breakfast} {i18n.amenities.breakfastPrice}, {i18n.amenities.halfBoard}</p>
+            </div>
+          </div>
+          <!-- Key badges -->
+          <div class="flex flex-wrap justify-center gap-4 mt-10">
+            <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-[var(--color-text-light)] shadow-sm">✓ {i18n.amenities.freeWifi}</span>
+            <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-[var(--color-text-light)] shadow-sm">✓ {i18n.amenities.freeParking}</span>
+            <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-[var(--color-text-light)] shadow-sm">✓ {i18n.amenities.fencedGrounds}</span>
+            <span class="px-4 py-2 bg-white rounded-full text-sm font-medium text-[var(--color-text-light)] shadow-sm">✓ {i18n.amenities.dogFriendly}</span>
+          </div>
+        </div>
+      </section>
+    );
+
+    if (section.type === 'surroundings') return (
+      <!-- SURROUNDINGS SECTION -->
+      <section class="py-20 bg-[var(--color-background)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">{i18n.homepage.surroundingsHeading}</h2>
+            <p class="text-lg text-[var(--color-text-light)]">{i18n.homepage.surroundingsDescription}</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {featuredAttractions.map(attr => (
+              <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 border border-[var(--color-text-muted)]/10">
+                <div class="aspect-[3/2] overflow-hidden relative">
+                  <img src={attr.image} alt={attr.name[lang]} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-[var(--color-text)]">
+                    {attr.distance} {i18n.surroundings.km}
+                  </span>
+                  {attr.lrcDiscount && (
+                    <span class="absolute top-3 left-3 bg-[var(--color-accent)] text-white px-3 py-1 rounded-full text-xs font-medium">
+                      LRC
+                    </span>
+                  )}
+                </div>
+                <div class="p-5">
+                  <h3 class="text-lg font-bold text-[var(--color-text)] mb-2">{attr.name[lang]}</h3>
+                  <p class="text-sm text-[var(--color-text-light)]">{attr.description[lang]}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="text-center mt-10">
+            <a href={getLocalizedPath(lang, '/surroundings')} class="inline-flex items-center px-8 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white rounded-full font-medium transition-colors duration-200">
+              {i18n.common.seeAll} →
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+
+    if (section.type === 'testimonials') return (
+      <!-- TESTIMONIALS SECTION -->
+      <section class="py-20 bg-[var(--color-background-alt)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-14">
+            <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">{i18n.homepage.testimonialsHeading}</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonialsData.items.map(item => (
+              <div class="bg-white p-8 rounded-2xl shadow-sm">
+                <div class="flex mb-4">
+                  {Array.from({ length: item.rating }).map(() => (
+                    <svg class="w-5 h-5 text-[var(--color-accent)]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  ))}
+                </div>
+                <p class="text-[var(--color-text-light)] mb-6 italic">"{item.text[lang]}"</p>
+                <p class="font-semibold text-[var(--color-text)]">{item.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    if (section.type === 'lrc') return (
+      <!-- LRC CARD SECTION -->
+      <section class="py-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-8">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" /></svg>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">{i18n.homepage.lrcHeading}</h2>
+          <p class="text-lg text-white/85 mb-10 max-w-2xl mx-auto">{i18n.homepage.lrcDescription}</p>
+          <a
+            href={getLocalizedPath(lang, '/surroundings')}
+            class="inline-flex items-center px-8 py-4 bg-white text-[var(--color-primary)] hover:bg-white/90 font-semibold rounded-full transition-colors duration-200"
+          >
+            {i18n.common.learnMore} →
+          </a>
+        </div>
+      </section>
+    );
+
+    return null;
+  })}
+
+  <!-- BOOKING CTA -->
+  <section class="py-16 bg-[var(--color-accent)] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">{i18n.nav.bookNow}</h2>
+      <p class="text-lg text-white/85 mb-8">
+        {generalSettings.phone} · {generalSettings.email}
+      </p>
+      <a
+        href={getLocalizedPath(lang, '/contact')}
+        class="inline-flex items-center px-10 py-4 bg-white text-[var(--color-accent-dark)] hover:bg-white/90 font-semibold rounded-full transition-colors duration-200 text-lg"
+      >
+        {i18n.hero.secondaryCtaText} →
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

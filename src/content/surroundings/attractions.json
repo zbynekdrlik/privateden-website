@@ -1,0 +1,103 @@
+{
+  "attractions": [
+    {
+      "id": "tatralandia",
+      "name": {
+        "sk": "Aquapark Tatralandia",
+        "pl": "Aquapark Tatralandia",
+        "en": "Tatralandia Aquapark"
+      },
+      "description": {
+        "sk": "Najväčší aquapark na Slovensku s celoročnou prevádzkou. Tobogány, wellness, termálne bazény a atrakcie pre celú rodinu.",
+        "pl": "Największy aquapark na Słowacji z całoroczną działalnością. Zjeżdżalnie, wellness, baseny termalne i atrakcje dla całej rodziny.",
+        "en": "The largest aquapark in Slovakia with year-round operation. Water slides, wellness, thermal pools and attractions for the whole family."
+      },
+      "distance": 7,
+      "category": "water",
+      "image": "https://images.unsplash.com/photo-1570655652364-2e0a67455ac6?w=600&h=400&fit=crop",
+      "url": "https://www.tatralandia.sk",
+      "lrcDiscount": true
+    },
+    {
+      "id": "ilianovo",
+      "name": {
+        "sk": "Lyžiarske stredisko Iľanovo",
+        "pl": "Ośrodek narciarski Iľanovo",
+        "en": "Iľanovo Ski Resort"
+      },
+      "description": {
+        "sk": "Rodinné lyžiarske stredisko ideálne pre začiatočníkov a rodiny s deťmi. Večerné lyžovanie a snowpark.",
+        "pl": "Rodzinny ośrodek narciarski idealny dla początkujących i rodzin z dziećmi. Nocna jazda na nartach i snowpark.",
+        "en": "Family ski resort ideal for beginners and families with children. Night skiing and snowpark."
+      },
+      "distance": 12.6,
+      "category": "winter",
+      "image": "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop",
+      "lrcDiscount": true
+    },
+    {
+      "id": "demanovska-ice-cave",
+      "name": {
+        "sk": "Demänovská ľadová jaskyňa",
+        "pl": "Jaskinia Lodowa Demianowska",
+        "en": "Demänovská Ice Cave"
+      },
+      "description": {
+        "sk": "Unikátna ľadová jaskyňa s nádhernými ľadovými útvarmi. Jeden z najkrajších prírodných pokladov Slovenska.",
+        "pl": "Unikalna jaskinia lodowa z pięknymi formacjami lodowymi. Jeden z najpiękniejszych skarbów przyrody Słowacji.",
+        "en": "Unique ice cave with beautiful ice formations. One of the most beautiful natural treasures of Slovakia."
+      },
+      "distance": 15.8,
+      "category": "nature",
+      "image": "https://images.unsplash.com/photo-1534186769887-ccfc3f3bfce0?w=600&h=400&fit=crop",
+      "lrcDiscount": true
+    },
+    {
+      "id": "liptovska-mara",
+      "name": {
+        "sk": "Liptovská Mara",
+        "pl": "Liptovská Mara",
+        "en": "Liptovská Mara Lake"
+      },
+      "description": {
+        "sk": "Najväčšia vodná nádrž na Slovensku. Pláže, vodné športy, plavba na lodi a rybolov.",
+        "pl": "Największy zbiornik wodny na Słowacji. Plaże, sporty wodne, rejsy i wędkarstwo.",
+        "en": "The largest reservoir in Slovakia. Beaches, water sports, boat trips and fishing."
+      },
+      "distance": 10,
+      "category": "water",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop",
+      "lrcDiscount": false
+    },
+    {
+      "id": "zoo-kontakt",
+      "name": { "sk": "Zoo Kontakt", "pl": "Zoo Kontakt", "en": "Zoo Kontakt" },
+      "description": {
+        "sk": "Kontaktná zoo len 3 km od nás. Deti sa môžu priamo dotknúť a kŕmiť zvieratá.",
+        "pl": "Zoo kontaktowe zaledwie 3 km od nas. Dzieci mogą bezpośrednio dotykać i karmić zwierzęta.",
+        "en": "Contact zoo just 3 km from us. Children can directly touch and feed the animals."
+      },
+      "distance": 3,
+      "category": "culture",
+      "image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=600&h=400&fit=crop",
+      "lrcDiscount": true
+    },
+    {
+      "id": "jasna",
+      "name": {
+        "sk": "Jasná Nízke Tatry",
+        "pl": "Jasná Niskie Tatry",
+        "en": "Jasná Low Tatras"
+      },
+      "description": {
+        "sk": "Najväčšie lyžiarske stredisko na Slovensku. V lete ideálne na turistiku a horskú cyklistiku.",
+        "pl": "Największy ośrodek narciarski na Słowacji. Latem idealny na turystykę pieszą i kolarstwo górskie.",
+        "en": "The largest ski resort in Slovakia. In summer ideal for hiking and mountain biking."
+      },
+      "distance": 19,
+      "category": "winter",
+      "image": "https://images.unsplash.com/photo-1565992441121-4367c2967103?w=600&h=400&fit=crop",
+      "lrcDiscount": true
+    }
+  ]
+}

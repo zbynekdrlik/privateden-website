@@ -1,0 +1,19 @@
+{
+  "sections": [
+    { "id": "apartments", "type": "apartments", "enabled": true, "order": 1 },
+    { "id": "amenities", "type": "amenities", "enabled": true, "order": 2 },
+    {
+      "id": "surroundings",
+      "type": "surroundings",
+      "enabled": true,
+      "order": 3
+    },
+    {
+      "id": "testimonials",
+      "type": "testimonials",
+      "enabled": true,
+      "order": 4
+    },
+    { "id": "lrc", "type": "lrc", "enabled": true, "order": 5 }
+  ]
+}

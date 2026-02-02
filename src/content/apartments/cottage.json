@@ -1,0 +1,37 @@
+{
+  "id": "cottage",
+  "slug": "cottage",
+  "order": 5,
+  "name": {
+    "sk": "Chatka",
+    "pl": "Chatka",
+    "en": "Cottage"
+  },
+  "description": {
+    "sk": "Samostatná chatka s vlastným vchodom, spálňou, obývačkou a kuchynkou. Ideálna pre tých, ktorí hľadajú viac súkromia.",
+    "pl": "Samodzielna chatka z własnym wejściem, sypialnią, salonem i aneksem kuchennym. Idealna dla tych, którzy szukają więcej prywatności.",
+    "en": "Standalone cottage with private entrance, bedroom, living room and kitchenette. Ideal for those seeking more privacy."
+  },
+  "capacity": 5,
+  "capacityNote": { "sk": "5 osôb", "pl": "5 osób", "en": "5 persons" },
+  "bedroomCount": 1,
+  "rooms": [
+    {
+      "type": "bedroom",
+      "beds": [
+        { "type": "double", "count": 1 },
+        { "type": "single", "count": 2 }
+      ]
+    },
+    { "type": "livingRoom", "extras": ["tv", "sofa"] },
+    { "type": "kitchenette" },
+    { "type": "bathroom" }
+  ],
+  "priceRange": { "min": 75, "max": 75 },
+  "mainImage": "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&h=600&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&h=600&fit=crop"
+  ],
+  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+}

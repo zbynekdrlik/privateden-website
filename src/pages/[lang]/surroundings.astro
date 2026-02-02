@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t, getAllLangPaths, getLocalizedPath, type Lang } from '../../utils/i18n';
+import attractionsData from '../../content/surroundings/attractions.json';
+
+export function getStaticPaths() {
+  return getAllLangPaths();
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const i18n = t(lang);
+
+const categories = ['water', 'winter', 'nature', 'culture'];
+const categoriesLabels: Record<string, string> = i18n.surroundings.categories;
+
+type Attraction = (typeof attractionsData.attractions)[number];
+
+function getAttrName(attr: Attraction): string {
+  return attr.name[lang];
+}
+
+function getAttrDescription(attr: Attraction): string {
+  return attr.description[lang];
+}
+
+function getAttrUrl(attr: Attraction): string | undefined {
+  return (attr as Record<string, any>).url;
+}
+
+const grouped = categories.map(cat => ({
+  key: cat,
+  label: categoriesLabels[cat],
+  items: attractionsData.attractions.filter(a => a.category === cat)
+})).filter(g => g.items.length > 0);
+---
+
+<BaseLayout title={i18n.surroundings.pageTitle} lang={lang} description={i18n.surroundings.pageDescription}>
+
+  <!-- Page Header -->
+  <section class="pt-20 pb-12 bg-[var(--color-background-alt)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-[var(--color-text)] mb-4" style="font-family: 'Playfair Display', serif;">
+        {i18n.surroundings.pageTitle}
+      </h1>
+      <p class="text-lg text-[var(--color-text-light)] max-w-3xl mx-auto">
+        {i18n.surroundings.pageDescription}
+      </p>
+    </div>
+  </section>
+
+  <!-- Attractions by Category -->
+  {grouped.map(group => (
+    <section class="py-16 bg-[var(--color-background)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-8">
+          {group.label}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {group.items.map(attr => {
+            const name = getAttrName(attr);
+            const description = getAttrDescription(attr);
+            const url = getAttrUrl(attr);
+            return (
+              <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[var(--color-text-muted)]/10 flex flex-col">
+                <div class="aspect-[3/2] overflow-hidden relative">
+                  <img
+                    src={attr.image}
+                    alt={name}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {/* Distance badge - top right */}
+                  <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-[var(--color-text)] shadow-sm">
+                    {attr.distance} {i18n.surroundings.km}
+                  </span>
+                  {/* LRC discount badge - top left */}
+                  {attr.lrcDiscount && (
+                    <span class="absolute top-3 left-3 bg-[var(--color-accent)] text-white px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
+                      {i18n.surroundings.lrcDiscount}
+                    </span>
+                  )}
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                  <h3 class="text-lg font-bold text-[var(--color-text)] mb-2">
+                    {name}
+                  </h3>
+                  <p class="text-sm text-[var(--color-text-light)] mb-4 flex-grow">
+                    {description}
+                  </p>
+                  <div class="flex items-center justify-between mt-auto pt-4 border-t border-[var(--color-text-muted)]/10">
+                    <span class="text-sm text-[var(--color-text-muted)] flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      {i18n.surroundings.distance}: {attr.distance} {i18n.surroundings.km}
+                    </span>
+                    {url && (
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors duration-200 flex items-center gap-1"
+                      >
+                        {i18n.surroundings.visitWebsite}
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- LRC Card Info Section -->
+  <section class="py-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-8">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+        </svg>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">{i18n.homepage.lrcHeading}</h2>
+      <p class="text-lg text-white/85 mb-10 max-w-2xl mx-auto">{i18n.homepage.lrcDescription}</p>
+      <a
+        href={getLocalizedPath(lang, '/contact')}
+        class="inline-flex items-center px-8 py-4 bg-white text-[var(--color-primary)] hover:bg-white/90 font-semibold rounded-full transition-colors duration-200"
+      >
+        {i18n.common.learnMore} →
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

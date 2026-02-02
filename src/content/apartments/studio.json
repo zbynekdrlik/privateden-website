@@ -1,0 +1,36 @@
+{
+  "id": "studio",
+  "slug": "studio",
+  "order": 4,
+  "name": {
+    "sk": "Štúdio",
+    "pl": "Studio",
+    "en": "Studio"
+  },
+  "description": {
+    "sk": "Útulné štúdio pre páry alebo menšiu rodinu. Kompaktné, ale plne vybavené so všetkým, čo potrebujete.",
+    "pl": "Przytulne studio dla par lub mniejszej rodziny. Kompaktowe, ale w pełni wyposażone we wszystko, czego potrzebujesz.",
+    "en": "Cozy studio for couples or a small family. Compact but fully equipped with everything you need."
+  },
+  "capacity": 4,
+  "capacityNote": { "sk": "4 osoby", "pl": "4 osoby", "en": "4 persons" },
+  "bedroomCount": 1,
+  "rooms": [
+    {
+      "type": "bedroom",
+      "beds": [
+        { "type": "double", "count": 1 },
+        { "type": "bunk", "count": 1 }
+      ]
+    },
+    { "type": "kitchenette" },
+    { "type": "bathroom" }
+  ],
+  "priceRange": { "min": 40, "max": 60 },
+  "mainImage": "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&h=600&fit=crop",
+  "images": [
+    "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop"
+  ],
+  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+}
