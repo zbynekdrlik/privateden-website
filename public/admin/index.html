@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager | Privat Eden</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary-color: #5B7C4D;
+        --primary-hover: #3d5a32;
+        --accent-color: #8B6914;
+        --background-color: #FEFCF8;
+        --sidebar-bg: #2C2418;
+        --text-color: #2C2418;
+        --text-muted: #5C5141;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      [class*="AppMainContainer"] > div:first-child,
+      [class*="SidebarNavList"],
+      nav[class*="Sidebar"] {
+        background-color: var(--sidebar-bg) !important;
+      }
+
+      [class*="ToolbarContainer"],
+      [class*="AppHeader"] {
+        background-color: var(--background-color) !important;
+        border-bottom: 1px solid #e7e5e4 !important;
+      }
+
+      button[class*="ToolbarButton"],
+      button[class*="Button"]:not([class*="DeleteButton"]) {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+      }
+
+      button[class*="ToolbarButton"]:hover,
+      button[class*="Button"]:not([class*="DeleteButton"]):hover {
+        background-color: var(--primary-hover) !important;
+        border-color: var(--primary-hover) !important;
+      }
+
+      a[class*="SidebarNavLink"][class*="active"],
+      [class*="active"] > a[class*="SidebarNavLink"] {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+      }
+
+      [class*="Card"],
+      [class*="EntryCard"],
+      [class*="ObjectWidgetTopBar"] {
+        border-radius: 12px !important;
+        border-color: #e7e5e4 !important;
+      }
+
+      [class*="ListCard"] {
+        border-radius: 8px !important;
+        transition: all 0.2s ease !important;
+      }
+
+      [class*="ListCard"]:hover {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 4px 6px -1px rgba(91, 124, 77, 0.1) !important;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="url"],
+      textarea,
+      select {
+        border-radius: 8px !important;
+        border-color: #d6d3d1 !important;
+        font-family: 'Inter', sans-serif !important;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 3px rgba(91, 124, 77, 0.15) !important;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', Georgia, serif !important;
+      }
+
+      [class*="LoginButton"] {
+        background-color: var(--primary-color) !important;
+        border-radius: 9999px !important;
+        font-weight: 600 !important;
+        padding: 12px 32px !important;
+      }
+
+      [class*="LoginButton"]:hover {
+        background-color: var(--primary-hover) !important;
+      }
+
+      [class*="CustomLogoContainer"],
+      [class*="LoginLogo"] {
+        font-family: 'Playfair Display', Georgia, serif !important;
+        color: var(--primary-color) !important;
+      }
+
+      [class*="PublishDropdownItem"]:hover {
+        background-color: rgba(91, 124, 77, 0.1) !important;
+      }
+
+      [class*="EditorToolbar"] button {
+        border-radius: 6px !important;
+      }
+
+      [class*="EditorToolbar"] button:hover {
+        background-color: rgba(91, 124, 77, 0.1) !important;
+      }
+
+      [class*="Modal"] {
+        border-radius: 16px !important;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f5f0e8;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #9C8E7C;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #5C5141;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
+</html>
