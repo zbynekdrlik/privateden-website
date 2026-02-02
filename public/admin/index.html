@@ -147,5 +147,22 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Replace "Login with GitHub" button text
+      const observer = new MutationObserver(function() {
+        const btn = document.querySelector('[class*="LoginButton"]');
+        if (btn && btn.textContent.includes('GitHub')) {
+          btn.childNodes.forEach(function(node) {
+            if (node.nodeType === 3 && node.textContent.includes('GitHub')) {
+              node.textContent = ' Prihlasit sa';
+            }
+          });
+          // Hide the GitHub icon
+          const icon = btn.querySelector('span svg, span img');
+          if (icon) icon.style.display = 'none';
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    </script>
   </body>
 </html>
