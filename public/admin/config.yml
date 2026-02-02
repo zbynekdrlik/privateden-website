@@ -10,10 +10,16 @@ public_folder: "/images/uploads"
 
 locale: "sk"
 
+i18n:
+  structure: multiple_files
+  locales: [sk, pl, en]
+  default_locale: sk
+
 collections:
   # ===== THEME =====
   - name: "theme"
     label: "Farby a vzhľad"
+    icon: "palette"
     files:
       - name: "colors"
         label: "Farby stránky"
@@ -99,6 +105,7 @@ collections:
   # ===== SETTINGS =====
   - name: "settings"
     label: "Nastavenia"
+    icon: "settings"
     files:
       - name: "general"
         label: "Všeobecné"
@@ -117,39 +124,6 @@ collections:
               name: "contactPerson",
               widget: "string",
             }
-
-      - name: "navigation"
-        label: "Navigácia"
-        file: "src/content/settings/navigation.json"
-        fields:
-          - label: "Logo"
-            name: "logo"
-            widget: "image"
-            required: false
-          - label: "Hlavné menu"
-            name: "mainNav"
-            widget: "list"
-            fields:
-              - { label: "Kľúč prekladu", name: "key", widget: "string" }
-              - { label: "Odkaz", name: "href", widget: "string" }
-              - {
-                  label: "Aktívne",
-                  name: "enabled",
-                  widget: "boolean",
-                  default: true,
-                }
-          - label: "CTA tlačidlo"
-            name: "ctaButton"
-            widget: "object"
-            fields:
-              - { label: "Kľúč prekladu", name: "key", widget: "string" }
-              - { label: "Odkaz", name: "href", widget: "string" }
-              - {
-                  label: "Aktívne",
-                  name: "enabled",
-                  widget: "boolean",
-                  default: true,
-                }
 
       - name: "contact"
         label: "Kontakt a pravidlá"
@@ -190,6 +164,7 @@ collections:
           - label: "Parkovanie"
             name: "parking"
             widget: "object"
+            collapsed: true
             fields:
               - {
                   label: "K dispozícii",
@@ -212,6 +187,7 @@ collections:
           - label: "WiFi"
             name: "wifi"
             widget: "object"
+            collapsed: true
             fields:
               - {
                   label: "K dispozícii",
@@ -255,6 +231,37 @@ collections:
               widget: "string",
             }
 
+      - name: "navigation"
+        label: "Navigácia"
+        file: "src/content/settings/navigation.json"
+        fields:
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - label: "Hlavné menu"
+            name: "mainNav"
+            widget: "list"
+            summary: "{{fields.key}} → {{fields.href}}"
+            fields:
+              - { label: "Kľúč prekladu", name: "key", widget: "string" }
+              - { label: "Odkaz", name: "href", widget: "string" }
+              - {
+                  label: "Aktívne",
+                  name: "enabled",
+                  widget: "boolean",
+                  default: true,
+                }
+          - label: "CTA tlačidlo"
+            name: "ctaButton"
+            widget: "object"
+            fields:
+              - { label: "Kľúč prekladu", name: "key", widget: "string" }
+              - { label: "Odkaz", name: "href", widget: "string" }
+              - {
+                  label: "Aktívne",
+                  name: "enabled",
+                  widget: "boolean",
+                  default: true,
+                }
+
       - name: "footer"
         label: "Päta stránky"
         file: "src/content/settings/footer.json"
@@ -276,6 +283,7 @@ collections:
   # ===== HOMEPAGE =====
   - name: "homepage"
     label: "Domovská stránka"
+    icon: "home"
     files:
       - name: "hero"
         label: "Hlavná sekcia (Hero)"
@@ -303,6 +311,7 @@ collections:
           - label: "Sekcie"
             name: "sections"
             widget: "list"
+            summary: "{{fields.id}} (poradie: {{fields.order}})"
             fields:
               - label: "Sekcia"
                 name: "id"
@@ -331,12 +340,14 @@ collections:
   # ===== APARTMENTS =====
   - name: "apartments"
     label: "Apartmány"
+    icon: "house"
     folder: "src/content/apartments"
     create: true
     delete: true
     slug: "{{slug}}"
     extension: "json"
     format: "json"
+    summary: "{{name.sk}} — {{capacity}} osôb, {{priceRange.min}}-{{priceRange.max}}€"
     fields:
       - { label: "ID", name: "id", widget: "string" }
       - { label: "Slug (URL)", name: "slug", widget: "string" }
@@ -344,6 +355,7 @@ collections:
       - label: "Názov"
         name: "name"
         widget: "object"
+        summary: "{{fields.sk}}"
         fields:
           - { label: "Slovensky", name: "sk", widget: "string" }
           - { label: "Poľsky", name: "pl", widget: "string" }
@@ -351,6 +363,8 @@ collections:
       - label: "Popis"
         name: "description"
         widget: "object"
+        collapsed: true
+        summary: "{{fields.sk}}"
         fields:
           - { label: "Slovensky", name: "sk", widget: "text" }
           - { label: "Poľsky", name: "pl", widget: "text" }
@@ -359,6 +373,8 @@ collections:
       - label: "Poznámka ku kapacite"
         name: "capacityNote"
         widget: "object"
+        collapsed: true
+        summary: "{{fields.sk}}"
         fields:
           - { label: "Slovensky", name: "sk", widget: "string" }
           - { label: "Poľsky", name: "pl", widget: "string" }
@@ -367,6 +383,8 @@ collections:
       - label: "Izby"
         name: "rooms"
         widget: "list"
+        summary: "{{fields.type}}"
+        collapsed: true
         fields:
           - label: "Typ izby"
             name: "type"
@@ -380,6 +398,8 @@ collections:
             name: "beds"
             widget: "list"
             required: false
+            collapsed: true
+            summary: "{{fields.count}}x {{fields.type}}"
             fields:
               - label: "Typ"
                 name: "type"
@@ -398,6 +418,7 @@ collections:
       - label: "Cenové rozpätie"
         name: "priceRange"
         widget: "object"
+        summary: "{{fields.min}}€ - {{fields.max}}€ / noc"
         fields:
           - { label: "Od (€/noc)", name: "min", widget: "number" }
           - { label: "Do (€/noc)", name: "max", widget: "number" }
@@ -423,6 +444,7 @@ collections:
   # ===== TESTIMONIALS =====
   - name: "testimonials"
     label: "Recenzie"
+    icon: "star"
     files:
       - name: "testimonials"
         label: "Recenzie hostí"
@@ -431,11 +453,13 @@ collections:
           - label: "Recenzie"
             name: "items"
             widget: "list"
+            summary: "{{fields.name}} ({{fields.rating}}/5)"
             fields:
-              - { label: "Meno", name: "name", widget: "string" }
-              - label: "Text"
+              - { label: "Meno hosťa", name: "name", widget: "string" }
+              - label: "Text recenzie"
                 name: "text"
                 widget: "object"
+                summary: "{{fields.sk}}"
                 fields:
                   - { label: "Slovensky", name: "sk", widget: "text" }
                   - { label: "Poľsky", name: "pl", widget: "text" }
@@ -458,6 +482,7 @@ collections:
   # ===== SURROUNDINGS =====
   - name: "surroundings"
     label: "Okolie"
+    icon: "map"
     files:
       - name: "attractions"
         label: "Atrakcie"
@@ -466,11 +491,13 @@ collections:
           - label: "Atrakcie"
             name: "attractions"
             widget: "list"
+            summary: "{{fields.name.sk}} — {{fields.distance}} km"
             fields:
               - { label: "ID", name: "id", widget: "string" }
               - label: "Názov"
                 name: "name"
                 widget: "object"
+                summary: "{{fields.sk}}"
                 fields:
                   - { label: "Slovensky", name: "sk", widget: "string" }
                   - { label: "Poľsky", name: "pl", widget: "string" }
@@ -478,6 +505,8 @@ collections:
               - label: "Popis"
                 name: "description"
                 widget: "object"
+                collapsed: true
+                summary: "{{fields.sk}}"
                 fields:
                   - { label: "Slovensky", name: "sk", widget: "text" }
                   - { label: "Poľsky", name: "pl", widget: "text" }
@@ -510,7 +539,42 @@ collections:
                   default: false,
                 }
 
-  # ===== GALLERY =====
+  # ===== GALLERY PHOTOS =====
+  - name: "gallery"
+    label: "Galéria - Fotky"
+    icon: "image"
+    folder: "src/content/gallery/photos"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    summary: "{{fields.alt}} ({{fields.category}})"
+    fields:
+      - { label: "Obrázok", name: "image", widget: "image" }
+      - {
+          label: "Popis obrázka",
+          name: "alt",
+          widget: "string",
+          hint: "Krátky popis toho, čo je na fotke",
+        }
+      - label: "Kategória"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Exteriér", value: "exterior" }
+          - { label: "Interiér", value: "interior" }
+          - { label: "Okolie", value: "surroundings" }
+          - { label: "Aktivity", value: "activities" }
+      - {
+          label: "Poradie",
+          name: "order",
+          widget: "number",
+          default: 0,
+          hint: "Nižšie číslo = zobrazí sa skôr",
+        }
+
+  # ===== GALLERY SETTINGS =====
   - name: "gallery-settings"
     label: "Galéria - Nastavenia"
     files:
@@ -532,870 +596,872 @@ collections:
   # ===== TRANSLATIONS =====
   - name: "translations"
     label: "Preklady"
+    icon: "translate"
+    i18n:
+      structure: multiple_files
+      locales: [sk, pl, en]
     files:
-      - name: "sk"
-        label: "Slovenčina"
-        file: "src/content/i18n/sk.json"
+      - name: "ui"
+        label: "Texty stránky"
+        file: "src/content/i18n/{{locale}}.json"
+        i18n: true
         fields:
           - label: "Meta"
             name: "meta"
             widget: "object"
+            collapsed: true
+            i18n: true
             fields:
               - {
                   label: "Kód jazyka",
                   name: "lang",
                   widget: "hidden",
-                  default: "sk",
+                  i18n: true,
                 }
-              - { label: "Názov jazyka", name: "langName", widget: "string" }
-              - { label: "Vlajka", name: "langFlag", widget: "string" }
-          - label: "Navigácia"
-            name: "nav"
-            widget: "object"
-            fields:
-              - { label: "Domov", name: "home", widget: "string" }
-              - { label: "Apartmány", name: "apartments", widget: "string" }
-              - { label: "Galéria", name: "gallery", widget: "string" }
-              - { label: "Okolie", name: "surroundings", widget: "string" }
-              - { label: "Kontakt", name: "contact", widget: "string" }
-              - { label: "Rezervovať", name: "bookNow", widget: "string" }
-          - label: "Hero sekcia"
-            name: "hero"
-            widget: "object"
-            fields:
-              - { label: "Titulok", name: "title", widget: "string" }
-              - { label: "Podtitulok", name: "subtitle", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "CTA tlačidlo", name: "ctaText", widget: "string" }
               - {
-                  label: "Druhé tlačidlo",
-                  name: "secondaryCtaText",
+                  label: "Názov jazyka",
+                  name: "langName",
                   widget: "string",
+                  i18n: true,
                 }
-          - label: "Domovská stránka"
-            name: "homepage"
-            widget: "object"
-            collapsed: true
-            fields:
               - {
-                  label: "Nadpis apartmány",
-                  name: "apartmentsHeading",
+                  label: "Vlajka (emoji)",
+                  name: "langFlag",
                   widget: "string",
-                }
-              - {
-                  label: "Popis apartmány",
-                  name: "apartmentsDescription",
-                  widget: "text",
-                }
-              - {
-                  label: "Nadpis vybavenie",
-                  name: "amenitiesHeading",
-                  widget: "string",
-                }
-              - {
-                  label: "Popis vybavenie",
-                  name: "amenitiesDescription",
-                  widget: "text",
-                }
-              - {
-                  label: "Nadpis okolie",
-                  name: "surroundingsHeading",
-                  widget: "string",
-                }
-              - {
-                  label: "Popis okolie",
-                  name: "surroundingsDescription",
-                  widget: "text",
-                }
-              - {
-                  label: "Nadpis recenzie",
-                  name: "testimonialsHeading",
-                  widget: "string",
-                }
-              - { label: "Nadpis LRC", name: "lrcHeading", widget: "string" }
-              - { label: "Popis LRC", name: "lrcDescription", widget: "text" }
-              - { label: "Tlačidlo viac", name: "viewAll", widget: "string" }
-              - {
-                  label: "Tlačidlo zobraziť viac",
-                  name: "viewMore",
-                  widget: "string",
-                }
-          - label: "Apartmány texty"
-            name: "apartments"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Od cena", name: "from", widget: "string" }
-              - { label: "Za noc", name: "perNight", widget: "string" }
-              - { label: "Osoby", name: "guests", widget: "string" }
-              - { label: "Spálne", name: "bedrooms", widget: "string" }
-              - {
-                  label: "Zobraziť detail",
-                  name: "viewDetail",
-                  widget: "string",
-                }
-              - { label: "Rezervovať", name: "bookNow", widget: "string" }
-              - {
-                  label: "Izby a postele",
-                  name: "roomsAndBeds",
-                  widget: "string",
-                }
-              - { label: "Vybavenie", name: "features", widget: "string" }
-              - {
-                  label: "Cenové rozpätie",
-                  name: "priceRange",
-                  widget: "string",
-                }
-          - label: "Vybavenie texty"
-            name: "amenities"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Sauna", name: "sauna", widget: "string" }
-              - { label: "Popis sauna", name: "saunaDesc", widget: "string" }
-              - { label: "Vírivka", name: "hotTub", widget: "string" }
-              - { label: "Popis vírivka", name: "hotTubDesc", widget: "string" }
-              - { label: "Ihrisko", name: "playground", widget: "string" }
-              - {
-                  label: "Popis ihrisko",
-                  name: "playgroundDesc",
-                  widget: "string",
-                }
-              - { label: "Biliard", name: "billiards", widget: "string" }
-              - {
-                  label: "Popis biliard",
-                  name: "billiardsDesc",
-                  widget: "string",
-                }
-              - { label: "Gril", name: "grill", widget: "string" }
-              - { label: "Popis gril", name: "grillDesc", widget: "string" }
-              - { label: "Trampolína", name: "trampoline", widget: "string" }
-              - {
-                  label: "Popis trampolína",
-                  name: "trampolineDesc",
-                  widget: "string",
-                }
-              - { label: "Stravovanie", name: "dining", widget: "string" }
-              - {
-                  label: "Popis stravovanie",
-                  name: "diningDesc",
-                  widget: "string",
-                }
-              - { label: "Parkovanie", name: "parking", widget: "string" }
-              - {
-                  label: "Popis parkovanie",
-                  name: "parkingDesc",
-                  widget: "string",
-                }
-          - label: "Okolie texty"
-            name: "surroundings"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Km od nás", name: "kmAway", widget: "string" }
-              - { label: "LRC zľava", name: "lrcDiscount", widget: "string" }
-              - {
-                  label: "Navštíviť web",
-                  name: "visitWebsite",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória voda",
-                  name: "categoryWater",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória zima",
-                  name: "categoryWinter",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória príroda",
-                  name: "categoryNature",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória kultúra",
-                  name: "categoryCulture",
-                  widget: "string",
-                }
-          - label: "Kontakt texty"
-            name: "contact"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Meno", name: "name", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Telefón", name: "phone", widget: "string" }
-              - { label: "Apartmán", name: "apartment", widget: "string" }
-              - {
-                  label: "Vyberte apartmán",
-                  name: "selectApartment",
-                  widget: "string",
-                }
-              - { label: "Check-in", name: "checkIn", widget: "string" }
-              - { label: "Check-out", name: "checkOut", widget: "string" }
-              - { label: "Počet hostí", name: "guestCount", widget: "string" }
-              - { label: "Správa", name: "message", widget: "string" }
-              - { label: "Odoslať", name: "send", widget: "string" }
-              - { label: "Odosiela sa", name: "sending", widget: "string" }
-              - {
-                  label: "Úspešne odoslané",
-                  name: "successMessage",
-                  widget: "string",
-                }
-              - {
-                  label: "Chybová správa",
-                  name: "errorMessage",
-                  widget: "string",
-                }
-              - {
-                  label: "Kontaktná osoba",
-                  name: "contactPerson",
-                  widget: "string",
-                }
-              - {
-                  label: "Dôležité info",
-                  name: "importantInfo",
-                  widget: "string",
-                }
-              - { label: "Nočný kľud", name: "quietHours", widget: "string" }
-              - {
-                  label: "Platba hotovosťou",
-                  name: "cashOnly",
-                  widget: "string",
-                }
-          - label: "Galéria texty"
-            name: "gallery"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Všetky", name: "all", widget: "string" }
-              - { label: "Exteriér", name: "exterior", widget: "string" }
-              - { label: "Interiér", name: "interior", widget: "string" }
-              - { label: "Okolie", name: "surroundings", widget: "string" }
-              - { label: "Vybavenie", name: "amenities", widget: "string" }
-          - label: "Päta"
-            name: "footer"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Slogan", name: "tagline", widget: "string" }
-              - { label: "Rýchle odkazy", name: "quickLinks", widget: "string" }
-              - {
-                  label: "Kontaktné údaje",
-                  name: "contactInfo",
-                  widget: "string",
-                }
-              - { label: "Copyright", name: "copyright", widget: "string" }
-          - label: "Spoločné"
-            name: "common"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Späť", name: "back", widget: "string" }
-              - { label: "Čítať viac", name: "readMore", widget: "string" }
-              - { label: "Zatvoriť", name: "close", widget: "string" }
-              - { label: "WiFi zadarmo", name: "freeWifi", widget: "string" }
-              - {
-                  label: "Parking zadarmo",
-                  name: "freeParking",
-                  widget: "string",
-                }
-              - { label: "Povolené psy", name: "dogFriendly", widget: "string" }
-              - {
-                  label: "Oplotený pozemok",
-                  name: "fencedGrounds",
-                  widget: "string",
-                }
-              - {
-                  label: "LRC karta zadarmo",
-                  name: "freeLRC",
-                  widget: "string",
+                  i18n: true,
                 }
 
-      - name: "pl"
-        label: "Poľština"
-        file: "src/content/i18n/pl.json"
-        fields:
-          - label: "Meta"
-            name: "meta"
-            widget: "object"
-            fields:
-              - {
-                  label: "Kód jazyka",
-                  name: "lang",
-                  widget: "hidden",
-                  default: "pl",
-                }
-              - { label: "Názov jazyka", name: "langName", widget: "string" }
-              - { label: "Vlajka", name: "langFlag", widget: "string" }
           - label: "Navigácia"
             name: "nav"
             widget: "object"
+            i18n: true
             fields:
-              - { label: "Domov", name: "home", widget: "string" }
-              - { label: "Apartmány", name: "apartments", widget: "string" }
-              - { label: "Galéria", name: "gallery", widget: "string" }
-              - { label: "Okolie", name: "surroundings", widget: "string" }
-              - { label: "Kontakt", name: "contact", widget: "string" }
-              - { label: "Rezervovať", name: "bookNow", widget: "string" }
-          - label: "Hero sekcia"
-            name: "hero"
-            widget: "object"
-            fields:
-              - { label: "Titulok", name: "title", widget: "string" }
-              - { label: "Podtitulok", name: "subtitle", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "CTA tlačidlo", name: "ctaText", widget: "string" }
+              - { label: "Domov", name: "home", widget: "string", i18n: true }
               - {
-                  label: "Druhé tlačidlo",
-                  name: "secondaryCtaText",
+                  label: "Apartmány",
+                  name: "apartments",
                   widget: "string",
+                  i18n: true,
                 }
-          - label: "Domovská stránka"
-            name: "homepage"
-            widget: "object"
-            collapsed: true
-            fields:
               - {
-                  label: "Nadpis apartmány",
-                  name: "apartmentsHeading",
+                  label: "Galéria",
+                  name: "gallery",
                   widget: "string",
+                  i18n: true,
                 }
               - {
-                  label: "Popis apartmány",
-                  name: "apartmentsDescription",
-                  widget: "text",
-                }
-              - {
-                  label: "Nadpis vybavenie",
-                  name: "amenitiesHeading",
+                  label: "Okolie",
+                  name: "surroundings",
                   widget: "string",
+                  i18n: true,
                 }
               - {
-                  label: "Popis vybavenie",
-                  name: "amenitiesDescription",
-                  widget: "text",
-                }
-              - {
-                  label: "Nadpis okolie",
-                  name: "surroundingsHeading",
+                  label: "Kontakt",
+                  name: "contact",
                   widget: "string",
+                  i18n: true,
                 }
               - {
-                  label: "Popis okolie",
-                  name: "surroundingsDescription",
-                  widget: "text",
-                }
-              - {
-                  label: "Nadpis recenzie",
-                  name: "testimonialsHeading",
+                  label: "Rezervovať",
+                  name: "bookNow",
                   widget: "string",
-                }
-              - { label: "Nadpis LRC", name: "lrcHeading", widget: "string" }
-              - { label: "Popis LRC", name: "lrcDescription", widget: "text" }
-              - { label: "Tlačidlo viac", name: "viewAll", widget: "string" }
-              - {
-                  label: "Tlačidlo zobraziť viac",
-                  name: "viewMore",
-                  widget: "string",
-                }
-          - label: "Apartmány texty"
-            name: "apartments"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Od cena", name: "from", widget: "string" }
-              - { label: "Za noc", name: "perNight", widget: "string" }
-              - { label: "Osoby", name: "guests", widget: "string" }
-              - { label: "Spálne", name: "bedrooms", widget: "string" }
-              - {
-                  label: "Zobraziť detail",
-                  name: "viewDetail",
-                  widget: "string",
-                }
-              - { label: "Rezervovať", name: "bookNow", widget: "string" }
-              - {
-                  label: "Izby a postele",
-                  name: "roomsAndBeds",
-                  widget: "string",
-                }
-              - { label: "Vybavenie", name: "features", widget: "string" }
-              - {
-                  label: "Cenové rozpätie",
-                  name: "priceRange",
-                  widget: "string",
-                }
-          - label: "Vybavenie texty"
-            name: "amenities"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Sauna", name: "sauna", widget: "string" }
-              - { label: "Popis sauna", name: "saunaDesc", widget: "string" }
-              - { label: "Vírivka", name: "hotTub", widget: "string" }
-              - { label: "Popis vírivka", name: "hotTubDesc", widget: "string" }
-              - { label: "Ihrisko", name: "playground", widget: "string" }
-              - {
-                  label: "Popis ihrisko",
-                  name: "playgroundDesc",
-                  widget: "string",
-                }
-              - { label: "Biliard", name: "billiards", widget: "string" }
-              - {
-                  label: "Popis biliard",
-                  name: "billiardsDesc",
-                  widget: "string",
-                }
-              - { label: "Gril", name: "grill", widget: "string" }
-              - { label: "Popis gril", name: "grillDesc", widget: "string" }
-              - { label: "Trampolína", name: "trampoline", widget: "string" }
-              - {
-                  label: "Popis trampolína",
-                  name: "trampolineDesc",
-                  widget: "string",
-                }
-              - { label: "Stravovanie", name: "dining", widget: "string" }
-              - {
-                  label: "Popis stravovanie",
-                  name: "diningDesc",
-                  widget: "string",
-                }
-              - { label: "Parkovanie", name: "parking", widget: "string" }
-              - {
-                  label: "Popis parkovanie",
-                  name: "parkingDesc",
-                  widget: "string",
-                }
-          - label: "Okolie texty"
-            name: "surroundings"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Km od nás", name: "kmAway", widget: "string" }
-              - { label: "LRC zľava", name: "lrcDiscount", widget: "string" }
-              - {
-                  label: "Navštíviť web",
-                  name: "visitWebsite",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória voda",
-                  name: "categoryWater",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória zima",
-                  name: "categoryWinter",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória príroda",
-                  name: "categoryNature",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória kultúra",
-                  name: "categoryCulture",
-                  widget: "string",
-                }
-          - label: "Kontakt texty"
-            name: "contact"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Meno", name: "name", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Telefón", name: "phone", widget: "string" }
-              - { label: "Apartmán", name: "apartment", widget: "string" }
-              - {
-                  label: "Vyberte apartmán",
-                  name: "selectApartment",
-                  widget: "string",
-                }
-              - { label: "Check-in", name: "checkIn", widget: "string" }
-              - { label: "Check-out", name: "checkOut", widget: "string" }
-              - { label: "Počet hostí", name: "guestCount", widget: "string" }
-              - { label: "Správa", name: "message", widget: "string" }
-              - { label: "Odoslať", name: "send", widget: "string" }
-              - { label: "Odosiela sa", name: "sending", widget: "string" }
-              - {
-                  label: "Úspešne odoslané",
-                  name: "successMessage",
-                  widget: "string",
-                }
-              - {
-                  label: "Chybová správa",
-                  name: "errorMessage",
-                  widget: "string",
-                }
-              - {
-                  label: "Kontaktná osoba",
-                  name: "contactPerson",
-                  widget: "string",
-                }
-              - {
-                  label: "Dôležité info",
-                  name: "importantInfo",
-                  widget: "string",
-                }
-              - { label: "Nočný kľud", name: "quietHours", widget: "string" }
-              - {
-                  label: "Platba hotovosťou",
-                  name: "cashOnly",
-                  widget: "string",
-                }
-          - label: "Galéria texty"
-            name: "gallery"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Všetky", name: "all", widget: "string" }
-              - { label: "Exteriér", name: "exterior", widget: "string" }
-              - { label: "Interiér", name: "interior", widget: "string" }
-              - { label: "Okolie", name: "surroundings", widget: "string" }
-              - { label: "Vybavenie", name: "amenities", widget: "string" }
-          - label: "Päta"
-            name: "footer"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Slogan", name: "tagline", widget: "string" }
-              - { label: "Rýchle odkazy", name: "quickLinks", widget: "string" }
-              - {
-                  label: "Kontaktné údaje",
-                  name: "contactInfo",
-                  widget: "string",
-                }
-              - { label: "Copyright", name: "copyright", widget: "string" }
-          - label: "Spoločné"
-            name: "common"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Späť", name: "back", widget: "string" }
-              - { label: "Čítať viac", name: "readMore", widget: "string" }
-              - { label: "Zatvoriť", name: "close", widget: "string" }
-              - { label: "WiFi zadarmo", name: "freeWifi", widget: "string" }
-              - {
-                  label: "Parking zadarmo",
-                  name: "freeParking",
-                  widget: "string",
-                }
-              - { label: "Povolené psy", name: "dogFriendly", widget: "string" }
-              - {
-                  label: "Oplotený pozemok",
-                  name: "fencedGrounds",
-                  widget: "string",
-                }
-              - {
-                  label: "LRC karta zadarmo",
-                  name: "freeLRC",
-                  widget: "string",
+                  i18n: true,
                 }
 
-      - name: "en"
-        label: "Angličtina"
-        file: "src/content/i18n/en.json"
-        fields:
-          - label: "Meta"
-            name: "meta"
-            widget: "object"
-            fields:
-              - {
-                  label: "Kód jazyka",
-                  name: "lang",
-                  widget: "hidden",
-                  default: "en",
-                }
-              - { label: "Názov jazyka", name: "langName", widget: "string" }
-              - { label: "Vlajka", name: "langFlag", widget: "string" }
-          - label: "Navigácia"
-            name: "nav"
-            widget: "object"
-            fields:
-              - { label: "Domov", name: "home", widget: "string" }
-              - { label: "Apartmány", name: "apartments", widget: "string" }
-              - { label: "Galéria", name: "gallery", widget: "string" }
-              - { label: "Okolie", name: "surroundings", widget: "string" }
-              - { label: "Kontakt", name: "contact", widget: "string" }
-              - { label: "Rezervovať", name: "bookNow", widget: "string" }
           - label: "Hero sekcia"
             name: "hero"
             widget: "object"
+            i18n: true
             fields:
-              - { label: "Titulok", name: "title", widget: "string" }
-              - { label: "Podtitulok", name: "subtitle", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "CTA tlačidlo", name: "ctaText", widget: "string" }
+              - {
+                  label: "Titulok",
+                  name: "title",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Podtitulok",
+                  name: "subtitle",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Popis",
+                  name: "description",
+                  widget: "text",
+                  i18n: true,
+                }
+              - {
+                  label: "CTA tlačidlo",
+                  name: "ctaText",
+                  widget: "string",
+                  i18n: true,
+                }
               - {
                   label: "Druhé tlačidlo",
                   name: "secondaryCtaText",
                   widget: "string",
+                  i18n: true,
                 }
+
           - label: "Domovská stránka"
             name: "homepage"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
               - {
                   label: "Nadpis apartmány",
                   name: "apartmentsHeading",
                   widget: "string",
+                  i18n: true,
                 }
               - {
                   label: "Popis apartmány",
                   name: "apartmentsDescription",
                   widget: "text",
+                  i18n: true,
                 }
               - {
                   label: "Nadpis vybavenie",
                   name: "amenitiesHeading",
                   widget: "string",
+                  i18n: true,
                 }
               - {
                   label: "Popis vybavenie",
                   name: "amenitiesDescription",
                   widget: "text",
+                  i18n: true,
                 }
               - {
                   label: "Nadpis okolie",
                   name: "surroundingsHeading",
                   widget: "string",
+                  i18n: true,
                 }
               - {
                   label: "Popis okolie",
                   name: "surroundingsDescription",
                   widget: "text",
+                  i18n: true,
                 }
               - {
                   label: "Nadpis recenzie",
                   name: "testimonialsHeading",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Nadpis LRC", name: "lrcHeading", widget: "string" }
-              - { label: "Popis LRC", name: "lrcDescription", widget: "text" }
-              - { label: "Tlačidlo viac", name: "viewAll", widget: "string" }
               - {
-                  label: "Tlačidlo zobraziť viac",
-                  name: "viewMore",
+                  label: "Nadpis LRC",
+                  name: "lrcHeading",
                   widget: "string",
+                  i18n: true,
                 }
+              - {
+                  label: "Popis LRC",
+                  name: "lrcDescription",
+                  widget: "text",
+                  i18n: true,
+                }
+              - {
+                  label: "Od cena",
+                  name: "fromPrice",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Za noc",
+                  name: "perNight",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Osoby",
+                  name: "persons",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Zobraziť detaily",
+                  name: "viewDetails",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Všetky apartmány",
+                  name: "allApartments",
+                  widget: "string",
+                  i18n: true,
+                }
+
           - label: "Apartmány texty"
             name: "apartments"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Od cena", name: "from", widget: "string" }
-              - { label: "Za noc", name: "perNight", widget: "string" }
-              - { label: "Osoby", name: "guests", widget: "string" }
-              - { label: "Spálne", name: "bedrooms", widget: "string" }
               - {
-                  label: "Zobraziť detail",
-                  name: "viewDetail",
+                  label: "Titulok stránky",
+                  name: "pageTitle",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Rezervovať", name: "bookNow", widget: "string" }
               - {
-                  label: "Izby a postele",
-                  name: "roomsAndBeds",
-                  widget: "string",
+                  label: "Popis stránky",
+                  name: "pageDescription",
+                  widget: "text",
+                  i18n: true,
                 }
-              - { label: "Vybavenie", name: "features", widget: "string" }
               - {
-                  label: "Cenové rozpätie",
-                  name: "priceRange",
+                  label: "Kapacita",
+                  name: "capacity",
                   widget: "string",
+                  i18n: true,
                 }
+              - {
+                  label: "Spálne",
+                  name: "bedrooms",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Vybavenie",
+                  name: "equipment",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Cena od",
+                  name: "priceFrom",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "€ / noc",
+                  name: "pricePerNight",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Prístelka",
+                  name: "extraBed",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Rezervovať apartmán",
+                  name: "bookThis",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Späť na zoznam",
+                  name: "backToList",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Osôb", name: "persons", widget: "string", i18n: true }
+              - {
+                  label: "Spálňa (j.č.)",
+                  name: "bedroom",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Spálne (mn.č.)",
+                  name: "bedroomPlural",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Obývačka",
+                  name: "livingRoom",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Kuchynka",
+                  name: "kitchenette",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Kúpeľňa",
+                  name: "bathroom",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Manželská posteľ",
+                  name: "doubleBed",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Poschodová posteľ",
+                  name: "bunkBed",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Jednolôžko",
+                  name: "singleBed",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Rozkladací gauč",
+                  name: "sofaBed",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "TV", name: "tv", widget: "string", i18n: true }
+              - { label: "WiFi", name: "wifi", widget: "string", i18n: true }
+              - {
+                  label: "Fotogaléria",
+                  name: "gallery",
+                  widget: "string",
+                  i18n: true,
+                }
+
           - label: "Vybavenie texty"
             name: "amenities"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
-              - { label: "Sauna", name: "sauna", widget: "string" }
-              - { label: "Popis sauna", name: "saunaDesc", widget: "string" }
-              - { label: "Vírivka", name: "hotTub", widget: "string" }
-              - { label: "Popis vírivka", name: "hotTubDesc", widget: "string" }
-              - { label: "Ihrisko", name: "playground", widget: "string" }
               - {
-                  label: "Popis ihrisko",
-                  name: "playgroundDesc",
+                  label: "Vonkajšie",
+                  name: "outdoor",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Biliard", name: "billiards", widget: "string" }
               - {
-                  label: "Popis biliard",
-                  name: "billiardsDesc",
+                  label: "Pre deti",
+                  name: "children",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Gril", name: "grill", widget: "string" }
-              - { label: "Popis gril", name: "grillDesc", widget: "string" }
-              - { label: "Trampolína", name: "trampoline", widget: "string" }
               - {
-                  label: "Popis trampolína",
-                  name: "trampolineDesc",
+                  label: "Rekreácia",
+                  name: "recreation",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Stravovanie", name: "dining", widget: "string" }
               - {
-                  label: "Popis stravovanie",
-                  name: "diningDesc",
+                  label: "Stravovanie",
+                  name: "dining",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Parkovanie", name: "parking", widget: "string" }
               - {
-                  label: "Popis parkovanie",
-                  name: "parkingDesc",
+                  label: "Všeobecné",
+                  name: "general",
                   widget: "string",
+                  i18n: true,
                 }
+              - {
+                  label: "Ohnisko",
+                  name: "bonfire",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Altánok",
+                  name: "gazebo",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Záhradná hojdačka",
+                  name: "gardenSwing",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Gril", name: "grill", widget: "string", i18n: true }
+              - {
+                  label: "Vonkajšie posedenie",
+                  name: "outdoorSeating",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Kotlík na varenie",
+                  name: "kettle",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Detské ihrisko",
+                  name: "playground",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Hračky", name: "toys", widget: "string", i18n: true }
+              - {
+                  label: "Trampolína",
+                  name: "trampoline",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Preliezačka",
+                  name: "climbingFrame",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Šmýkačka",
+                  name: "slide",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Pieskovisko",
+                  name: "sandbox",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Detská hojdačka",
+                  name: "childrenSwing",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Biliard",
+                  name: "billiards",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Šípky", name: "darts", widget: "string", i18n: true }
+              - {
+                  label: "Stolný futbal",
+                  name: "tableFootball",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Sauna", name: "sauna", widget: "string", i18n: true }
+              - {
+                  label: "Cena sauna",
+                  name: "saunaPrice",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Vírivka",
+                  name: "hotTub",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Cena vírivka",
+                  name: "hotTubPrice",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Raňajky",
+                  name: "breakfast",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Cena raňajky",
+                  name: "breakfastPrice",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Obed", name: "lunch", widget: "string", i18n: true }
+              - {
+                  label: "Cena obed",
+                  name: "lunchPrice",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Večera",
+                  name: "dinner",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Cena večera",
+                  name: "dinnerPrice",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Polpenzia",
+                  name: "halfBoard",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Psy povolené",
+                  name: "dogFriendly",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "WiFi zdarma",
+                  name: "freeWifi",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Parking zdarma",
+                  name: "freeParking",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Oplotený areál",
+                  name: "fencedGrounds",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Práčka a sušička",
+                  name: "washingMachine",
+                  widget: "string",
+                  i18n: true,
+                }
+
           - label: "Okolie texty"
             name: "surroundings"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Km od nás", name: "kmAway", widget: "string" }
-              - { label: "LRC zľava", name: "lrcDiscount", widget: "string" }
+              - {
+                  label: "Titulok stránky",
+                  name: "pageTitle",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Popis stránky",
+                  name: "pageDescription",
+                  widget: "text",
+                  i18n: true,
+                }
+              - {
+                  label: "Vzdialenosť",
+                  name: "distance",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Km", name: "km", widget: "string", i18n: true }
+              - label: "Kategórie"
+                name: "categories"
+                widget: "object"
+                i18n: true
+                fields:
+                  - {
+                      label: "Vodné atrakcie",
+                      name: "water",
+                      widget: "string",
+                      i18n: true,
+                    }
+                  - {
+                      label: "Zimné športy",
+                      name: "winter",
+                      widget: "string",
+                      i18n: true,
+                    }
+                  - {
+                      label: "Príroda a jaskyne",
+                      name: "nature",
+                      widget: "string",
+                      i18n: true,
+                    }
+                  - {
+                      label: "Kultúra a zážitky",
+                      name: "culture",
+                      widget: "string",
+                      i18n: true,
+                    }
+              - {
+                  label: "LRC zľava",
+                  name: "lrcDiscount",
+                  widget: "string",
+                  i18n: true,
+                }
               - {
                   label: "Navštíviť web",
                   name: "visitWebsite",
                   widget: "string",
+                  i18n: true,
                 }
-              - {
-                  label: "Kategória voda",
-                  name: "categoryWater",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória zima",
-                  name: "categoryWinter",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória príroda",
-                  name: "categoryNature",
-                  widget: "string",
-                }
-              - {
-                  label: "Kategória kultúra",
-                  name: "categoryCulture",
-                  widget: "string",
-                }
+
           - label: "Kontakt texty"
             name: "contact"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Meno", name: "name", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Telefón", name: "phone", widget: "string" }
-              - { label: "Apartmán", name: "apartment", widget: "string" }
+              - {
+                  label: "Titulok stránky",
+                  name: "pageTitle",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Popis stránky",
+                  name: "pageDescription",
+                  widget: "text",
+                  i18n: true,
+                }
+              - {
+                  label: "Nadpis formulára",
+                  name: "formHeading",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Meno", name: "name", widget: "string", i18n: true }
+              - {
+                  label: "Meno placeholder",
+                  name: "namePlaceholder",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Email", name: "email", widget: "string", i18n: true }
+              - {
+                  label: "Email placeholder",
+                  name: "emailPlaceholder",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Telefón",
+                  name: "phone",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Telefón placeholder",
+                  name: "phonePlaceholder",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Apartmán",
+                  name: "apartment",
+                  widget: "string",
+                  i18n: true,
+                }
               - {
                   label: "Vyberte apartmán",
                   name: "selectApartment",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Check-in", name: "checkIn", widget: "string" }
-              - { label: "Check-out", name: "checkOut", widget: "string" }
-              - { label: "Počet hostí", name: "guestCount", widget: "string" }
-              - { label: "Správa", name: "message", widget: "string" }
-              - { label: "Odoslať", name: "send", widget: "string" }
-              - { label: "Odosiela sa", name: "sending", widget: "string" }
+              - {
+                  label: "Check-in",
+                  name: "checkIn",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Check-out",
+                  name: "checkOut",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Počet hostí",
+                  name: "guests",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Správa",
+                  name: "message",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Správa placeholder",
+                  name: "messagePlaceholder",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Odoslať",
+                  name: "submit",
+                  widget: "string",
+                  i18n: true,
+                }
               - {
                   label: "Úspešne odoslané",
                   name: "successMessage",
                   widget: "string",
+                  i18n: true,
                 }
               - {
-                  label: "Chybová správa",
-                  name: "errorMessage",
+                  label: "Dôležité info nadpis",
+                  name: "infoTitle",
                   widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Čas check-in",
+                  name: "checkInTime",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Čas check-out",
+                  name: "checkOutTime",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Platba",
+                  name: "paymentMethod",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Nočný kľud",
+                  name: "quietHours",
+                  widget: "string",
+                  i18n: true,
                 }
               - {
                   label: "Kontaktná osoba",
                   name: "contactPerson",
                   widget: "string",
+                  i18n: true,
                 }
               - {
-                  label: "Dôležité info",
-                  name: "importantInfo",
+                  label: "Adresa",
+                  name: "address",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Nočný kľud", name: "quietHours", widget: "string" }
-              - {
-                  label: "Platba hotovosťou",
-                  name: "cashOnly",
-                  widget: "string",
-                }
+
           - label: "Galéria texty"
             name: "gallery"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
-              - { label: "Nadpis", name: "heading", widget: "string" }
-              - { label: "Popis", name: "description", widget: "text" }
-              - { label: "Všetky", name: "all", widget: "string" }
-              - { label: "Exteriér", name: "exterior", widget: "string" }
-              - { label: "Interiér", name: "interior", widget: "string" }
-              - { label: "Okolie", name: "surroundings", widget: "string" }
-              - { label: "Vybavenie", name: "amenities", widget: "string" }
+              - {
+                  label: "Titulok stránky",
+                  name: "pageTitle",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Popis stránky",
+                  name: "pageDescription",
+                  widget: "text",
+                  i18n: true,
+                }
+              - label: "Kategórie"
+                name: "categories"
+                widget: "object"
+                i18n: true
+                fields:
+                  - {
+                      label: "Všetko",
+                      name: "all",
+                      widget: "string",
+                      i18n: true,
+                    }
+                  - {
+                      label: "Exteriér",
+                      name: "exterior",
+                      widget: "string",
+                      i18n: true,
+                    }
+                  - {
+                      label: "Interiér",
+                      name: "interior",
+                      widget: "string",
+                      i18n: true,
+                    }
+                  - {
+                      label: "Okolie",
+                      name: "surroundings",
+                      widget: "string",
+                      i18n: true,
+                    }
+                  - {
+                      label: "Aktivity",
+                      name: "activities",
+                      widget: "string",
+                      i18n: true,
+                    }
+
           - label: "Päta"
             name: "footer"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
-              - { label: "Slogan", name: "tagline", widget: "string" }
-              - { label: "Rýchle odkazy", name: "quickLinks", widget: "string" }
+              - {
+                  label: "Slogan",
+                  name: "tagline",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Rýchle odkazy",
+                  name: "quickLinks",
+                  widget: "string",
+                  i18n: true,
+                }
               - {
                   label: "Kontaktné údaje",
                   name: "contactInfo",
                   widget: "string",
+                  i18n: true,
                 }
-              - { label: "Copyright", name: "copyright", widget: "string" }
+              - {
+                  label: "Copyright",
+                  name: "copyright",
+                  widget: "string",
+                  i18n: true,
+                }
+
           - label: "Spoločné"
             name: "common"
             widget: "object"
             collapsed: true
+            i18n: true
             fields:
-              - { label: "Späť", name: "back", widget: "string" }
-              - { label: "Čítať viac", name: "readMore", widget: "string" }
-              - { label: "Zatvoriť", name: "close", widget: "string" }
-              - { label: "WiFi zadarmo", name: "freeWifi", widget: "string" }
               - {
-                  label: "Parking zadarmo",
-                  name: "freeParking",
+                  label: "Viac informácií",
+                  name: "learnMore",
                   widget: "string",
-                }
-              - { label: "Povolené psy", name: "dogFriendly", widget: "string" }
-              - {
-                  label: "Oplotený pozemok",
-                  name: "fencedGrounds",
-                  widget: "string",
+                  i18n: true,
                 }
               - {
-                  label: "LRC karta zadarmo",
-                  name: "freeLRC",
+                  label: "Zobraziť všetko",
+                  name: "seeAll",
                   widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Zavrieť",
+                  name: "close",
+                  widget: "string",
+                  i18n: true,
+                }
+              - {
+                  label: "Predchádzajúci",
+                  name: "previous",
+                  widget: "string",
+                  i18n: true,
+                }
+              - { label: "Ďalší", name: "next", widget: "string", i18n: true }
+              - {
+                  label: "Načítava sa",
+                  name: "loading",
+                  widget: "string",
+                  i18n: true,
                 }
