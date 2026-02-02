@@ -17,7 +17,7 @@ interface Props {
 const { title, description = "Rodinné ubytovanie v srdci Liptova", lang = DEFAULT_LANG, ogImage } = Astro.props;
 const cssVariables = generateCSSVariables();
 const siteName = generalSettings.siteName;
-const siteUrl = 'https://privateden.newlevel.church';
+const siteUrl = 'https://privateden.sk';
 
 // Build alternate language URLs
 const pathWithoutLang = Astro.url.pathname.replace(/^\/(sk|pl|en)/, '') || '/';
