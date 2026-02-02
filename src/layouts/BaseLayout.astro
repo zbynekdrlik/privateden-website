@@ -4,20 +4,59 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import { generateCSSVariables } from '../utils/theme'
 import generalSettings from '../content/settings/general.json'
+import contactData from '../content/settings/contact.json'
 import { type Lang, DEFAULT_LANG } from '../utils/i18n'
 
 interface Props {
   title: string;
   description?: string;
   lang?: Lang;
+  ogImage?: string;
 }
 
-const { title, description = "Rodinné ubytovanie v srdci Liptova", lang = DEFAULT_LANG } = Astro.props;
+const { title, description = "Rodinné ubytovanie v srdci Liptova", lang = DEFAULT_LANG, ogImage } = Astro.props;
 const cssVariables = generateCSSVariables();
 const siteName = generalSettings.siteName;
+const siteUrl = 'https://privateden.newlevel.church';
 
 // Build alternate language URLs
 const pathWithoutLang = Astro.url.pathname.replace(/^\/(sk|pl|en)/, '') || '/';
+const canonicalUrl = `${siteUrl}/${lang}${pathWithoutLang}`;
+const ogImageUrl = ogImage || `${siteUrl}/images/og-default.jpg`;
+
+// Structured data for the accommodation business
+const structuredData = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": siteName,
+  "url": siteUrl,
+  "telephone": generalSettings.phone,
+  "email": generalSettings.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": contactData.address.street,
+    "addressLocality": contactData.address.city,
+    "postalCode": contactData.address.zip,
+    "addressCountry": "SK"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.085,
+    "longitude": 19.543
+  },
+  "checkinTime": contactData.checkIn,
+  "checkoutTime": contactData.checkOut,
+  "numberOfRooms": 5,
+  "petsAllowed": contactData.dogFriendly,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Sauna", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Hot Tub", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Playground", "value": true }
+  ],
+  "priceRange": "€40-€85"
+});
 ---
 
 <!DOCTYPE html>
@@ -27,11 +66,31 @@ const pathWithoutLang = Astro.url.pathname.replace(/^\/(sk|pl|en)/, '') || '/';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" hreflang="sk" href={`/sk${pathWithoutLang}`} />
-    <link rel="alternate" hreflang="pl" href={`/pl${pathWithoutLang}`} />
-    <link rel="alternate" hreflang="en" href={`/en${pathWithoutLang}`} />
-    <link rel="alternate" hreflang="x-default" href={`/sk${pathWithoutLang}`} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="sk" href={`${siteUrl}/sk${pathWithoutLang}`} />
+    <link rel="alternate" hreflang="pl" href={`${siteUrl}/pl${pathWithoutLang}`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en${pathWithoutLang}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/sk${pathWithoutLang}`} />
     <title>{title} | {siteName}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | ${siteName}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={lang === 'sk' ? 'sk_SK' : lang === 'pl' ? 'pl_PL' : 'en_US'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | ${siteName}`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={structuredData}></script>
+
     <style set:html={cssVariables}></style>
   </head>
   <body class="min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-text)]">
