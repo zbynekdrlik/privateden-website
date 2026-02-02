@@ -2,5 +2,7 @@ name = "privateden-oauth"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
-# Secrets are set via: wrangler secret put GITHUB_CLIENT_ID
-# and: wrangler secret put GITHUB_CLIENT_SECRET
+# Secrets are set via:
+#   wrangler secret put ADMIN_USERNAME
+#   wrangler secret put ADMIN_PASSWORD
+#   wrangler secret put GITHUB_TOKEN
