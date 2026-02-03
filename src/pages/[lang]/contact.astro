@@ -383,14 +383,9 @@ const fullAddress = `${contactData.address.street}, ${contactData.address.zip} $
 
       try {
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
         const response = await fetch(form.action, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-          body: JSON.stringify(data),
+          body: formData,
         });
 
         if (response.ok) {
