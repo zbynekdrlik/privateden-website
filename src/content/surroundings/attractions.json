@@ -143,6 +143,24 @@
       "image": "/images/uploads/IMG_3576.webp",
       "url": "",
       "lrcDiscount": false
+    },
+    {
+      "id": "Hurricane Factory",
+      "name": {
+        "sk": "Hurricane Factory",
+        "pl": "Hurricane Factory",
+        "en": "Hurricane Factory"
+      },
+      "description": {
+        "sk": "Hurricane Factory – adrenalínový zážitok z voľného pádu v modernom veternom tuneli, bezpečný aj pre začiatočníkov a deti.",
+        "pl": "Hurricane Factory – emocjonujące latanie w tunelu aerodynamicznym, bezpieczne nawet dla początkujących i dzieci.",
+        "en": "Hurricane Factory – an indoor skydiving experience in a modern wind tunnel, safe and fun for beginners and kids."
+      },
+      "distance": 7,
+      "category": "culture",
+      "image": "/images/uploads/IMG-20251120-WA0013.jpg",
+      "url": "",
+      "lrcDiscount": false
     }
   ]
 }
