@@ -50,7 +50,7 @@
       },
       "distance": 15.8,
       "category": "nature",
-      "image": "https://images.unsplash.com/photo-1534186769887-ccfc3f3bfce0?w=600&h=400&fit=crop",
+      "image": "/images/uploads/IMG_3572.webp",
       "url": "",
       "lrcDiscount": false
     },
@@ -68,7 +68,7 @@
       },
       "distance": 10,
       "category": "water",
-      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop",
+      "image": "/images/uploads/IMG_3573.jpeg",
       "url": "",
       "lrcDiscount": false
     },
@@ -86,7 +86,7 @@
       },
       "distance": 3,
       "category": "culture",
-      "image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=600&h=400&fit=crop",
+      "image": "/images/uploads/IMG_3568.jpeg",
       "url": "",
       "lrcDiscount": false
     },
@@ -104,7 +104,7 @@
       },
       "distance": 19,
       "category": "winter",
-      "image": "https://images.unsplash.com/photo-1565992441121-4367c2967103?w=600&h=400&fit=crop",
+      "image": "/images/uploads/IMG_3569.jpeg",
       "url": "",
       "lrcDiscount": false
     }
