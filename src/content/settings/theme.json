@@ -1,6 +1,6 @@
 {
   "colors": {
-    "primary": "#5B7C4D",
+    "primary": "#fefcdd",
     "primaryLight": "#38571a",
     "primaryDark": "#3d5a32",
     "accent": "#8B6914",
@@ -11,6 +11,6 @@
     "headerBackground": "#FEFCF8",
     "text": "#2C2418",
     "textLight": "#fefcdd",
-    "textMuted": "#fff2d5"
+    "textMuted": "#263e0f"
   }
 }
