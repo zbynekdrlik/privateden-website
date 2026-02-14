@@ -19,19 +19,19 @@
       "lrcDiscount": false
     },
     {
-      "id": "ilianovo",
+      "id": "luminaverse",
       "name": {
-        "sk": "Lyžiarske stredisko Iľanovo",
-        "pl": "Ośrodek narciarski Iľanovo",
-        "en": "Iľanovo Ski Resort"
+        "sk": "Luminaverse",
+        "pl": "Luminaverse",
+        "en": "Luminaverse"
       },
       "description": {
         "sk": "Rodinné lyžiarske stredisko ideálne pre začiatočníkov a rodiny s deťmi. Večerné lyžovanie a snowpark.",
         "pl": "Rodzinny ośrodek narciarski idealny dla początkujących i rodzin z dziećmi. Nocna jazda na nartach i snowpark.",
         "en": "Family ski resort ideal for beginners and families with children. Night skiing and snowpark."
       },
-      "distance": 12.6,
-      "category": "winter",
+      "distance": 6,
+      "category": "culture",
       "image": "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop",
       "url": "",
       "lrcDiscount": false
