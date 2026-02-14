@@ -107,6 +107,24 @@
       "image": "/images/uploads/IMG_3569.jpeg",
       "url": "",
       "lrcDiscount": false
+    },
+    {
+      "id": "funpark ziarce",
+      "name": {
+        "sk": "FUN PARK Ziarce",
+        "pl": "FUN PARK Ziarce",
+        "en": "FUN PARK Ziarce"
+      },
+      "description": {
+        "sk": "Bobová dráha Žiarce – adrenalínová horská bobová dráha v areáli Fun Park Žiarce s dĺžkou 1000 m a 16 zákrutami, kde si rýchlosť sami regulujete a spúšťate sa v bezpečných boboch vhodných pre rodiny s deťmi.",
+        "pl": "Bobová dráha Žiarce – emocjonujący tor bobslejowy w Fun Park Żiarce o długości 1000 m i 16 zakrętach, na którym samodzielnie regulujesz prędkość i możesz bezpiecznie zjeżdżać całą rodziną.",
+        "en": "Bobová dráha Žiarce – an exciting mountain bobsleigh track in Fun Park Žiarce, about 1 km long with 16 curves, where visitors control their own speed and enjoy a safe ride suitable for families and kids."
+      },
+      "distance": 15,
+      "category": "culture",
+      "image": "/images/uploads/IMG_3575.jpeg",
+      "url": "",
+      "lrcDiscount": false
     }
   ]
 }
