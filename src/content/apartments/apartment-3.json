@@ -1,22 +1,22 @@
 {
-  "id": "apartment-3",
-  "slug": "apartment-3",
+  "id": "apartment-rodinny",
+  "slug": "apartment-rodinny",
   "order": 3,
   "name": {
-    "sk": "Apartmán č. 3",
-    "pl": "Apartament nr 3",
-    "en": "Apartment #3"
+    "sk": "Apartmán rodinny",
+    "pl": "Apartament rodzinny",
+    "en": "Apartment family"
   },
   "description": {
     "sk": "Veľký apartmán s dvoma spálňami, vhodný pre väčšie rodiny. Moderná kuchynka a pohodlná kúpeľňa.",
     "pl": "Duży apartament z dwoma sypialniami, odpowiedni dla większych rodzin. Nowoczesny aneks kuchenny i wygodna łazienka.",
     "en": "Large apartment with two bedrooms, suitable for larger families. Modern kitchenette and comfortable bathroom."
   },
-  "capacity": 5,
+  "capacity": 6,
   "capacityNote": {
-    "sk": "5 osôb",
-    "pl": "5 osób",
-    "en": "5 persons"
+    "sk": "6 osôb",
+    "pl": "6 osób",
+    "en": "6 persons"
   },
   "bedroomCount": 2,
   "rooms": [
@@ -50,12 +50,13 @@
     }
   ],
   "priceRange": {
-    "min": 75,
-    "max": 75
+    "min": 50,
+    "max": 100
   },
-  "mainImage": "/images/uploads/44-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
+  "mainImage": "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&h=600&fit=crop",
   "images": [
-    "/images/uploads/44-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg"
+    "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop"
   ],
   "features": [
     "wifi",
