@@ -1,11 +1,11 @@
 {
-  "id": "apartment-2",
-  "slug": "apartment-2",
+  "id": "apartment-tomek",
+  "slug": "apartment-tomek",
   "order": 2,
   "name": {
-    "sk": "Apartmán č. 2",
-    "pl": "Apartament nr 2",
-    "en": "Apartment #2"
+    "sk": "Apartmán Tomek",
+    "pl": "Apartament Tomek",
+    "en": "Apartment Tomek"
   },
   "description": {
     "sk": "Komfortný apartmán s dvoma samostatnými spálňami. Perfektný pre páry alebo menšie skupiny priateľov.",
@@ -46,8 +46,8 @@
     }
   ],
   "priceRange": {
-    "min": 60,
-    "max": 85
+    "min": 65,
+    "max": 75
   },
   "mainImage": "/images/uploads/IMG-20250209-WA0024.jpg",
   "images": [
