@@ -13,19 +13,52 @@
     "en": "Comfortable apartment with two separate bedrooms. Perfect for couples or small groups of friends."
   },
   "capacity": 4,
-  "capacityNote": { "sk": "4 osoby", "pl": "4 osoby", "en": "4 persons" },
+  "capacityNote": {
+    "sk": "4 osoby",
+    "pl": "4 osoby",
+    "en": "4 persons"
+  },
   "bedroomCount": 2,
   "rooms": [
-    { "type": "bedroom", "beds": [{ "type": "double", "count": 1 }] },
-    { "type": "bedroom", "beds": [{ "type": "double", "count": 1 }] },
-    { "type": "kitchenette" },
-    { "type": "bathroom" }
+    {
+      "type": "bedroom",
+      "beds": [
+        {
+          "type": "double",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "bedroom",
+      "beds": [
+        {
+          "type": "double",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "kitchenette"
+    },
+    {
+      "type": "bathroom"
+    }
   ],
-  "priceRange": { "min": 60, "max": 85 },
-  "mainImage": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+  "priceRange": {
+    "min": 60,
+    "max": 85
+  },
+  "mainImage": "/images/uploads/IMG-20250209-WA0024.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+    "/images/uploads/IMG-20250209-WA0014.jpg",
     "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=800&h=600&fit=crop"
   ],
-  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+  "features": [
+    "wifi",
+    "tv",
+    "kitchenette",
+    "bathroom",
+    "parking"
+  ]
 }
