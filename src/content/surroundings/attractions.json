@@ -1,4 +1,7 @@
 {
+  "lrcSection": {
+    "enabled": false
+  },
   "attractions": [
     {
       "id": "tatralandia",

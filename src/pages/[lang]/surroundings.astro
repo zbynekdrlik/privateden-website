@@ -117,23 +117,25 @@ const grouped = categories.map(cat => ({
     </section>
   ))}
 
-  <!-- LRC Card Info Section -->
-  <section class="py-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-8">
-        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-        </svg>
+  {attractionsData.lrcSection?.enabled && (
+    <!-- LRC Card Info Section -->
+    <section class="py-20 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-8">
+          <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+          </svg>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">{i18n.homepage.lrcHeading}</h2>
+        <p class="text-lg text-white/85 mb-10 max-w-2xl mx-auto">{i18n.homepage.lrcDescription}</p>
+        <a
+          href={getLocalizedPath(lang, '/contact')}
+          class="inline-flex items-center px-8 py-4 bg-white text-[var(--color-primary)] hover:bg-white/90 font-semibold rounded-full transition-colors duration-200"
+        >
+          {i18n.common.learnMore} →
+        </a>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">{i18n.homepage.lrcHeading}</h2>
-      <p class="text-lg text-white/85 mb-10 max-w-2xl mx-auto">{i18n.homepage.lrcDescription}</p>
-      <a
-        href={getLocalizedPath(lang, '/contact')}
-        class="inline-flex items-center px-8 py-4 bg-white text-[var(--color-primary)] hover:bg-white/90 font-semibold rounded-full transition-colors duration-200"
-      >
-        {i18n.common.learnMore} →
-      </a>
-    </div>
-  </section>
+    </section>
+  )}
 
 </BaseLayout>

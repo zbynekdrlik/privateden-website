@@ -13,6 +13,7 @@ export interface ThemeColors {
   text: string;
   textLight: string;
   textMuted: string;
+  heroText: string;
 }
 
 export function getThemeColors(): ThemeColors {
@@ -35,6 +36,7 @@ export function generateCSSVariables(): string {
       --color-text: ${c.text};
       --color-text-light: ${c.textLight};
       --color-text-muted: ${c.textMuted};
+      --color-hero-text: ${c.heroText};
     }
   `;
 }

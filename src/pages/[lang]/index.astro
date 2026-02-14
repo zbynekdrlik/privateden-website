@@ -32,14 +32,14 @@ const featuredAttractions = attractionsData.attractions.slice(0, 3);
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
       </div>
-      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
+      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center" style="color: var(--color-hero-text)">
         <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">
           {i18n.hero.title}
         </h1>
-        <p class="text-xl md:text-2xl font-light mb-3 text-white/90">
+        <p class="text-xl md:text-2xl font-light mb-3 opacity-90">
           {i18n.hero.subtitle}
         </p>
-        <p class="text-base md:text-lg text-white/75 max-w-2xl mx-auto mb-10">
+        <p class="text-base md:text-lg opacity-75 max-w-2xl mx-auto mb-10">
           {i18n.hero.description}
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -58,7 +58,7 @@ const featuredAttractions = attractionsData.attractions.slice(0, 3);
         </div>
       </div>
       <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/60">
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-60" style="color: var(--color-hero-text)">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>

@@ -8,7 +8,7 @@
     "home": "Domov",
     "apartments": "Apartmány",
     "gallery": "Galéria",
-    "surroundings": "Okolie",
+    "surroundings": "Atrakcie",
     "contact": "Kontakt",
     "bookNow": "Rezervovať"
   },
@@ -24,7 +24,7 @@
     "apartmentsDescription": "Vyberte si z 5 komfortných ubytovacích jednotiek vo vidieckom štýle. Každá s vlastnou kuchynkou, kúpeľňou a WiFi.",
     "amenitiesHeading": "Čo vás u nás čaká",
     "amenitiesDescription": "Relax, zábava a príroda na jednom mieste.",
-    "surroundingsHeading": "Objavte okolie",
+    "surroundingsHeading": "Objavte atrakcie",
     "surroundingsDescription": "Liptov ponúka nekonečné možnosti zábavy a dobrodružstiev pre celú rodinu.",
     "testimonialsHeading": "Čo hovoria naši hostia",
     "lrcHeading": "Liptov Region Card",
@@ -100,7 +100,7 @@
     "washingMachine": "Práčka a sušička"
   },
   "surroundings": {
-    "pageTitle": "Okolie a atrakcie",
+    "pageTitle": "Atrakcie",
     "pageDescription": "Liptov je raj pre rodiny, športovcov aj milovníkov prírody. Objavte najlepšie miesta v okolí Privátu Eden.",
     "distance": "Vzdialenosť",
     "km": "km",

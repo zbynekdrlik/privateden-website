@@ -8,7 +8,7 @@
     "home": "Home",
     "apartments": "Apartments",
     "gallery": "Gallery",
-    "surroundings": "Surroundings",
+    "surroundings": "Attractions",
     "contact": "Contact",
     "bookNow": "Book Now"
   },
@@ -24,7 +24,7 @@
     "apartmentsDescription": "Choose from 5 comfortable accommodation units in a countryside style. Each with its own kitchenette, bathroom and WiFi.",
     "amenitiesHeading": "What awaits you",
     "amenitiesDescription": "Relaxation, fun and nature in one place.",
-    "surroundingsHeading": "Discover the surroundings",
+    "surroundingsHeading": "Discover attractions",
     "surroundingsDescription": "Liptov offers endless possibilities for fun and adventure for the whole family.",
     "testimonialsHeading": "What our guests say",
     "lrcHeading": "Liptov Region Card",
@@ -100,7 +100,7 @@
     "washingMachine": "Washing machine and dryer"
   },
   "surroundings": {
-    "pageTitle": "Surroundings & Attractions",
+    "pageTitle": "Attractions",
     "pageDescription": "Liptov is a paradise for families, athletes and nature lovers. Discover the best places near Privat Eden.",
     "distance": "Distance",
     "km": "km",

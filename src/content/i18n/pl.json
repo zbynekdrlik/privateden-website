@@ -8,7 +8,7 @@
     "home": "Strona główna",
     "apartments": "Apartamenty",
     "gallery": "Galeria",
-    "surroundings": "Okolica",
+    "surroundings": "Atrakcje",
     "contact": "Kontakt",
     "bookNow": "Zarezerwuj"
   },
@@ -24,7 +24,7 @@
     "apartmentsDescription": "Wybierz spośród 5 komfortowych jednostek noclegowych w stylu wiejskim. Każda z własnym aneksem kuchennym, łazienką i WiFi.",
     "amenitiesHeading": "Co na Ciebie czeka",
     "amenitiesDescription": "Relaks, rozrywka i przyroda w jednym miejscu.",
-    "surroundingsHeading": "Odkryj okolicę",
+    "surroundingsHeading": "Odkryj atrakcje",
     "surroundingsDescription": "Liptów oferuje nieskończone możliwości zabawy i przygód dla całej rodziny.",
     "testimonialsHeading": "Co mówią nasi goście",
     "lrcHeading": "Liptov Region Card",
@@ -100,7 +100,7 @@
     "washingMachine": "Pralka i suszarka"
   },
   "surroundings": {
-    "pageTitle": "Okolica i atrakcje",
+    "pageTitle": "Atrakcje",
     "pageDescription": "Liptów to raj dla rodzin, sportowców i miłośników przyrody. Odkryj najlepsze miejsca w okolicy Privátu Eden.",
     "distance": "Odległość",
     "km": "km",
