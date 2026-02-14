@@ -16,7 +16,7 @@
       "category": "water",
       "image": "/images/uploads/IMG_3567.jpeg",
       "url": "https://www.tatralandia.sk",
-      "lrcDiscount": true
+      "lrcDiscount": false
     },
     {
       "id": "ilianovo",
@@ -34,7 +34,7 @@
       "category": "winter",
       "image": "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop",
       "url": "",
-      "lrcDiscount": true
+      "lrcDiscount": false
     },
     {
       "id": "demanovska-ice-cave",
@@ -52,7 +52,7 @@
       "category": "nature",
       "image": "https://images.unsplash.com/photo-1534186769887-ccfc3f3bfce0?w=600&h=400&fit=crop",
       "url": "",
-      "lrcDiscount": true
+      "lrcDiscount": false
     },
     {
       "id": "liptovska-mara",
@@ -88,7 +88,7 @@
       "category": "culture",
       "image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=600&h=400&fit=crop",
       "url": "",
-      "lrcDiscount": true
+      "lrcDiscount": false
     },
     {
       "id": "jasna",
@@ -105,7 +105,8 @@
       "distance": 19,
       "category": "winter",
       "image": "https://images.unsplash.com/photo-1565992441121-4367c2967103?w=600&h=400&fit=crop",
-      "lrcDiscount": true
+      "url": "",
+      "lrcDiscount": false
     }
   ]
 }
