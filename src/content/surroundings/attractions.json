@@ -161,6 +161,24 @@
       "image": "/images/uploads/IMG_3586.jpeg",
       "url": "",
       "lrcDiscount": false
+    },
+    {
+      "id": "Demänovská jaskyňa slobody",
+      "name": {
+        "sk": "Demänovská jaskyňa slobody",
+        "pl": "Jaskinia Wolności Demianowska",
+        "en": "Demänovská Cave of Liberty"
+      },
+      "description": {
+        "sk": "Demänovská jaskyňa slobody – jedna z najkrajších sprístupnených jaskýň na Slovensku s bohatou kvapľovou výzdobou, podzemnými sieňami a jazierkami.",
+        "pl": "Jaskinia Wolności Demianowska – jedna z najpiękniejszych udostępnionych jaskiń na Słowacji, z bogatą szatą naciekową, podziemnymi salami i jeziorkami.",
+        "en": "Demänovská Cave of Liberty – one of the most beautiful show caves in Slovakia, featuring rich stalactite formations, underground halls and lakes."
+      },
+      "distance": 18,
+      "category": "nature",
+      "image": "/images/uploads/29-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
+      "url": "",
+      "lrcDiscount": false
     }
   ]
 }
