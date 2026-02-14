@@ -125,6 +125,24 @@
       "image": "/images/uploads/IMG_3575.jpeg",
       "url": "",
       "lrcDiscount": false
+    },
+    {
+      "id": "Prosiecka dolina",
+      "name": {
+        "sk": "Prosiecka Dolina",
+        "pl": "Prosiecka Dolina",
+        "en": "Prosiecka Dolina"
+      },
+      "description": {
+        "sk": "Prosiecka dolina – nádherná tiesňava s vodopádmi, rebríkmi a drevenými lávkami, ideálna na dobrodružnú prechádzku v prírode pre rodiny aj turistov.",
+        "pl": "Malownicza dolina z wodospadami, drabinami i drewnianymi kładkami, świetny na przygodowy spacer w naturze dla całej rodziny.",
+        "en": "Prosiecka dolina – a beautiful canyon with waterfalls, ladders and wooden walkways, offering an adventurous nature walk for families and hikers."
+      },
+      "distance": 17,
+      "category": "nature",
+      "image": "/images/uploads/IMG_3576.webp",
+      "url": "",
+      "lrcDiscount": false
     }
   ]
 }
