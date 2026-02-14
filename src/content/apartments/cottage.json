@@ -12,11 +12,11 @@
     "pl": "Samodzielna chatka z własnym wejściem, sypialnią, salonem i aneksem kuchennym. Idealna dla tych, którzy szukają więcej prywatności.",
     "en": "Standalone cottage with private entrance, bedroom, living room and kitchenette. Ideal for those seeking more privacy."
   },
-  "capacity": 5,
+  "capacity": 6,
   "capacityNote": {
-    "sk": "5 osôb",
-    "pl": "5 osób",
-    "en": "5 persons"
+    "sk": "4 osoby + prísteľka",
+    "pl": "4 osoby + dostawka",
+    "en": "4 persons + extra bed"
   },
   "bedroomCount": 1,
   "rooms": [
@@ -48,8 +48,8 @@
     }
   ],
   "priceRange": {
-    "min": 75,
-    "max": 75
+    "min": 65,
+    "max": 85
   },
   "mainImage": "/images/uploads/28-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
   "images": [
