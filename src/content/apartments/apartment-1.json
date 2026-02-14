@@ -51,11 +51,11 @@
     "min": 65,
     "max": 75
   },
-  "mainImage": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
+  "mainImage": "/images/uploads/33-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
   "images": [
-    "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop"
+    "/images/uploads/35-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
+    "/images/uploads/34-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
+    "/images/uploads/36-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg"
   ],
   "features": [
     "wifi",
