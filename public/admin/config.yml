@@ -101,6 +101,12 @@ collections:
                   widget: "color",
                   default: "#9C8E7C",
                 }
+              - {
+                  label: "Farba textu hero sekcie",
+                  name: "heroText",
+                  widget: "color",
+                  default: "#ffffff",
+                }
 
   # ===== SETTINGS =====
   - name: "settings"
