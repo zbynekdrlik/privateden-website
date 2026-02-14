@@ -46,8 +46,7 @@
   },
   "mainImage": "/images/uploads/IMG-20250209-WA0024.jpg",
   "images": [
-    "/images/uploads/IMG-20250209-WA0014.jpg",
-    "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop"
+    "/images/uploads/IMG-20250209-WA0014.jpg"
   ],
   "features": [
     "wifi",
