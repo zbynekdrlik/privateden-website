@@ -24,17 +24,19 @@
       "type": "bedroom",
       "beds": [
         {
-          "type": "double",
-          "count": 1
-        },
-        {
           "type": "single",
-          "count": 2
+          "count": 4
         }
       ]
     },
     {
       "type": "livingRoom",
+      "beds": [
+        {
+          "type": "sofa",
+          "count": 2
+        }
+      ],
       "extras": [
         "tv",
         "sofa"
