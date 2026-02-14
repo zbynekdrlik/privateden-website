@@ -28,7 +28,7 @@
           "count": 1
         },
         {
-          "type": "single",
+          "type": "bunk",
           "count": 1
         }
       ]
@@ -53,9 +53,10 @@
     "min": 50,
     "max": 100
   },
-  "mainImage": "/images/uploads/44-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
+  "mainImage": "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&h=600&fit=crop",
   "images": [
-    "/images/uploads/42-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg"
+    "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop"
   ],
   "features": [
     "wifi",
