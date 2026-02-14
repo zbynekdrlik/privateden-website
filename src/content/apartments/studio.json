@@ -44,9 +44,9 @@
     "min": 60,
     "max": 80
   },
-  "mainImage": "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&h=600&fit=crop",
+  "mainImage": "/images/uploads/IMG-20250209-WA0024.jpg",
   "images": [
-    "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&h=600&fit=crop",
+    "/images/uploads/IMG-20250209-WA0014.jpg",
     "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&h=600&fit=crop"
   ],
   "features": [
