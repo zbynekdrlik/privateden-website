@@ -26,13 +26,13 @@
         "en": "Luminaverse"
       },
       "description": {
-        "sk": "Rodinné lyžiarske stredisko ideálne pre začiatočníkov a rodiny s deťmi. Večerné lyžovanie a snowpark.",
-        "pl": "Rodzinny ośrodek narciarski idealny dla początkujących i rodzin z dziećmi. Nocna jazda na nartach i snowpark.",
-        "en": "Family ski resort ideal for beginners and families with children. Night skiing and snowpark."
+        "sk": "Luminaverse na Liptove – čarovný svet svetiel, rozprávkových inštalácií a nočnej atmosféry pre malých aj veľkých.",
+        "pl": "Luminaverse na Liptowie – magiczny świat świateł i bajkowych instalacji, który zachwyci dzieci i dorosłych.",
+        "en": "Luminaverse in Liptov – a magical world of lights and fairytale installations creating an unforgettable night experience for all ages."
       },
       "distance": 6,
       "category": "culture",
-      "image": "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop",
+      "image": "/images/uploads/IMG_3574.webp",
       "url": "",
       "lrcDiscount": false
     },
