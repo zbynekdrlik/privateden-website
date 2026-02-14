@@ -13,25 +13,54 @@
     "en": "Standalone cottage with private entrance, bedroom, living room and kitchenette. Ideal for those seeking more privacy."
   },
   "capacity": 5,
-  "capacityNote": { "sk": "5 osôb", "pl": "5 osób", "en": "5 persons" },
+  "capacityNote": {
+    "sk": "5 osôb",
+    "pl": "5 osób",
+    "en": "5 persons"
+  },
   "bedroomCount": 1,
   "rooms": [
     {
       "type": "bedroom",
       "beds": [
-        { "type": "double", "count": 1 },
-        { "type": "single", "count": 2 }
+        {
+          "type": "double",
+          "count": 1
+        },
+        {
+          "type": "single",
+          "count": 2
+        }
       ]
     },
-    { "type": "livingRoom", "extras": ["tv", "sofa"] },
-    { "type": "kitchenette" },
-    { "type": "bathroom" }
+    {
+      "type": "livingRoom",
+      "extras": [
+        "tv",
+        "sofa"
+      ]
+    },
+    {
+      "type": "kitchenette"
+    },
+    {
+      "type": "bathroom"
+    }
   ],
-  "priceRange": { "min": 75, "max": 75 },
-  "mainImage": "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&h=600&fit=crop",
+  "priceRange": {
+    "min": 75,
+    "max": 75
+  },
+  "mainImage": "/images/uploads/28-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg",
   "images": [
-    "https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=800&h=600&fit=crop"
+    "/images/uploads/IMG_7537.jpeg",
+    "/images/uploads/28-liptowski-mikulasz-gosciniec-eden-noclegi-bliskotatralandi.jpeg"
   ],
-  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+  "features": [
+    "wifi",
+    "tv",
+    "kitchenette",
+    "bathroom",
+    "parking"
+  ]
 }
