@@ -3,9 +3,9 @@
   "slug": "apartment-1",
   "order": 1,
   "name": {
-    "sk": "Apartmán č. 1",
-    "pl": "Apartament nr 1",
-    "en": "Apartment #1"
+    "sk": "Apartmán Levanduľa",
+    "pl": "Apartament Lawendowy",
+    "en": "Apartment Lavender"
   },
   "description": {
     "sk": "Priestranný apartmán pre rodiny s jednou spálňou, obývačkou a kompletne vybavenou kuchynkou. Ideálny pre rodiny s deťmi.",
@@ -23,20 +23,45 @@
     {
       "type": "bedroom",
       "beds": [
-        { "type": "double", "count": 1 },
-        { "type": "bunk", "count": 1 }
+        {
+          "type": "double",
+          "count": 1
+        },
+        {
+          "type": "bunk",
+          "count": 1
+        }
       ]
     },
-    { "type": "livingRoom", "extras": ["tv", "sofa"] },
-    { "type": "kitchenette" },
-    { "type": "bathroom" }
+    {
+      "type": "livingRoom",
+      "extras": [
+        "tv",
+        "sofa"
+      ]
+    },
+    {
+      "type": "kitchenette"
+    },
+    {
+      "type": "bathroom"
+    }
   ],
-  "priceRange": { "min": 50, "max": 75 },
+  "priceRange": {
+    "min": 65,
+    "max": 75
+  },
   "mainImage": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
   "images": [
     "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop",
     "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
     "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop"
   ],
-  "features": ["wifi", "tv", "kitchenette", "bathroom", "parking"]
+  "features": [
+    "wifi",
+    "tv",
+    "kitchenette",
+    "bathroom",
+    "parking"
+  ]
 }
