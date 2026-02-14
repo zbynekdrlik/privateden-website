@@ -14,7 +14,7 @@
       },
       "distance": 7,
       "category": "water",
-      "image": "https://images.unsplash.com/photo-1570655652364-2e0a67455ac6?w=600&h=400&fit=crop",
+      "image": "/images/uploads/IMG_3567.jpeg",
       "url": "https://www.tatralandia.sk",
       "lrcDiscount": true
     },
@@ -33,6 +33,7 @@
       "distance": 12.6,
       "category": "winter",
       "image": "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop",
+      "url": "",
       "lrcDiscount": true
     },
     {
@@ -50,6 +51,7 @@
       "distance": 15.8,
       "category": "nature",
       "image": "https://images.unsplash.com/photo-1534186769887-ccfc3f3bfce0?w=600&h=400&fit=crop",
+      "url": "",
       "lrcDiscount": true
     },
     {
@@ -67,11 +69,16 @@
       "distance": 10,
       "category": "water",
       "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop",
+      "url": "",
       "lrcDiscount": false
     },
     {
       "id": "zoo-kontakt",
-      "name": { "sk": "Zoo Kontakt", "pl": "Zoo Kontakt", "en": "Zoo Kontakt" },
+      "name": {
+        "sk": "Zoo Kontakt",
+        "pl": "Zoo Kontakt",
+        "en": "Zoo Kontakt"
+      },
       "description": {
         "sk": "Kontaktná zoo len 3 km od nás. Deti sa môžu priamo dotknúť a kŕmiť zvieratá.",
         "pl": "Zoo kontaktowe zaledwie 3 km od nas. Dzieci mogą bezpośrednio dotykać i karmić zwierzęta.",
@@ -80,6 +87,7 @@
       "distance": 3,
       "category": "culture",
       "image": "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?w=600&h=400&fit=crop",
+      "url": "",
       "lrcDiscount": true
     },
     {
