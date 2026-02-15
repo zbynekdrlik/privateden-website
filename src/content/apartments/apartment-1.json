@@ -61,9 +61,9 @@
   ],
   "features": [
     "wifi",
-    "tv",
     "kitchenette",
     "bathroom",
-    "parking"
+    "parking",
+    "tv"
   ]
 }
