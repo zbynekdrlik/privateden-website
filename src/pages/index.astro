@@ -10,6 +10,17 @@
       (function() {
         var supported = ['sk', 'pl', 'en'];
         var defaultLang = 'sk';
+
+        // 1. Check if user previously chose a language
+        try {
+          var saved = localStorage.getItem('preferred-lang');
+          if (saved && supported.indexOf(saved) !== -1) {
+            window.location.replace('/' + saved + '/');
+            return;
+          }
+        } catch(e) {}
+
+        // 2. Detect from browser language settings
         var langs = navigator.languages || [navigator.language || ''];
         var detected = defaultLang;
 

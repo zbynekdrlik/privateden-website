@@ -121,7 +121,7 @@ collections:
               label: "Názov penzionu",
               name: "siteName",
               widget: "string",
-              default: "Privát Eden",
+              default: "Privat Eden",
             }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Telefón", name: "phone", widget: "string" }

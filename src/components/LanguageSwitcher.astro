@@ -36,7 +36,8 @@ const current = languages.find(l => l.active)!;
     {languages.filter(l => !l.active).map(lang => (
       <a
         href={lang.href}
-        class="flex items-center gap-2.5 px-4 py-2.5 hover:bg-[var(--color-background-alt)] transition-colors duration-200 text-[var(--color-text-light)]"
+        data-lang={lang.code}
+        class="lang-link flex items-center gap-2.5 px-4 py-2.5 hover:bg-[var(--color-background-alt)] transition-colors duration-200 text-[var(--color-text-light)]"
       >
         <span class="text-base">{lang.flag}</span>
         <span class="text-sm font-medium">{lang.name}</span>
@@ -53,6 +54,16 @@ const current = languages.find(l => l.active)!;
     toggle?.addEventListener('click', (e) => {
       e.stopPropagation();
       dropdown?.classList.toggle('hidden');
+    });
+  });
+
+  // Save language preference when user picks a language
+  document.querySelectorAll('.lang-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const lang = (link as HTMLElement).dataset.lang;
+      if (lang) {
+        try { localStorage.setItem('preferred-lang', lang); } catch(e) {}
+      }
     });
   });
 
