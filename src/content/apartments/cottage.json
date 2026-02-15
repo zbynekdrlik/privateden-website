@@ -30,23 +30,17 @@
       ]
     },
     {
-      "type": "livingRoom",
-      "beds": [
-        {
-          "type": "sofa",
-          "count": 2
-        }
-      ],
-      "extras": [
-        "tv",
-        "sofa"
-      ]
-    },
-    {
       "type": "kitchenette"
     },
     {
       "type": "bathroom"
+    },
+    {
+      "type": "livingRoom",
+      "beds": [],
+      "extras": [
+        "sofa"
+      ]
     }
   ],
   "priceRange": {
