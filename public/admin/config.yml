@@ -1055,39 +1055,15 @@ collections:
                   i18n: true,
                 }
               - {
-                  label: "Cena vírivka",
-                  name: "hotTubPrice",
-                  widget: "string",
-                  i18n: true,
-                }
-              - {
                   label: "Raňajky",
                   name: "breakfast",
                   widget: "string",
                   i18n: true,
                 }
-              - {
-                  label: "Cena raňajky",
-                  name: "breakfastPrice",
-                  widget: "string",
-                  i18n: true,
-                }
               - { label: "Obed", name: "lunch", widget: "string", i18n: true }
-              - {
-                  label: "Cena obed",
-                  name: "lunchPrice",
-                  widget: "string",
-                  i18n: true,
-                }
               - {
                   label: "Večera",
                   name: "dinner",
-                  widget: "string",
-                  i18n: true,
-                }
-              - {
-                  label: "Cena večera",
-                  name: "dinnerPrice",
                   widget: "string",
                   i18n: true,
                 }
