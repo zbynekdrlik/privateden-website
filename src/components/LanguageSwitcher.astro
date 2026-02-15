@@ -20,10 +20,9 @@ const languages = SUPPORTED_LANGS.map(lang => ({
 const current = languages.find(l => l.active)!;
 ---
 
-<div class="relative" id="lang-switcher">
+<div class="relative lang-switcher">
   <button
-    id="lang-toggle"
-    class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--color-text-muted)]/30 hover:border-[var(--color-primary)] transition-colors duration-200 text-[var(--color-text-light)]"
+    class="lang-toggle flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--color-text-muted)]/30 hover:border-[var(--color-primary)] transition-colors duration-200 text-[var(--color-text-light)]"
     aria-label="Switch language"
   >
     <span class="text-base">{current.flag}</span>
@@ -33,7 +32,7 @@ const current = languages.find(l => l.active)!;
     </svg>
   </button>
 
-  <div id="lang-dropdown" class="hidden absolute right-0 top-full mt-1 bg-white rounded-xl shadow-lg border border-[var(--color-text-muted)]/20 overflow-hidden z-50 min-w-[140px]">
+  <div class="lang-dropdown hidden absolute right-0 top-full mt-1 bg-white rounded-xl shadow-lg border border-[var(--color-text-muted)]/20 overflow-hidden z-50 min-w-[140px]">
     {languages.filter(l => !l.active).map(lang => (
       <a
         href={lang.href}
@@ -47,15 +46,17 @@ const current = languages.find(l => l.active)!;
 </div>
 
 <script>
-  const toggle = document.getElementById('lang-toggle');
-  const dropdown = document.getElementById('lang-dropdown');
+  document.querySelectorAll('.lang-switcher').forEach((switcher) => {
+    const toggle = switcher.querySelector('.lang-toggle');
+    const dropdown = switcher.querySelector('.lang-dropdown');
 
-  toggle?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dropdown?.classList.toggle('hidden');
+    toggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown?.classList.toggle('hidden');
+    });
   });
 
   document.addEventListener('click', () => {
-    dropdown?.classList.add('hidden');
+    document.querySelectorAll('.lang-dropdown').forEach((d) => d.classList.add('hidden'));
   });
 </script>
