@@ -38,9 +38,7 @@
     {
       "type": "livingRoom",
       "beds": [],
-      "extras": [
-        "double sofa"
-      ]
+      "extras": []
     }
   ],
   "priceRange": {
