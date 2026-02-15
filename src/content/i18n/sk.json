@@ -15,7 +15,7 @@
   "hero": {
     "title": "Privát Eden",
     "subtitle": "Dokonalý oddych v srdci Liptova",
-    "description": "Rodinné ubytovanie v malebnej dedinke Pavlova Ves. 5 komfortných apartmánov, sauna, vírivka a detský raj — ideálny východiskový bod pre objavovanie Liptova.",
+    "description": "Rodinné ubytovanie v malebnej dedinke Pavlova Ves. 5 komfortných apartmánov, vírivka a detský raj — ideálny východiskový bod pre objavovanie Liptova.",
     "ctaText": "Pozrieť apartmány",
     "secondaryCtaText": "Kontaktovať nás"
   },
@@ -82,8 +82,6 @@
     "billiards": "Biliard",
     "darts": "Šípky",
     "tableFootball": "Stolný futbal",
-    "sauna": "Sauna",
-    "saunaPrice": "25€ / deň",
     "hotTub": "Vírivka",
     "hotTubPrice": "25€ / deň",
     "breakfast": "Raňajky",

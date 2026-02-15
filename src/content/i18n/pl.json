@@ -15,7 +15,7 @@
   "hero": {
     "title": "Privát Eden",
     "subtitle": "Idealny wypoczynek w sercu Liptowa",
-    "description": "Rodzinne zakwaterowanie w malowniczej wiosce Pavlova Ves. 5 komfortowych apartamentów, sauna, jacuzzi i raj dla dzieci — idealny punkt wypadowy do odkrywania Liptowa.",
+    "description": "Rodzinne zakwaterowanie w malowniczej wiosce Pavlova Ves. 5 komfortowych apartamentów, jacuzzi i raj dla dzieci — idealny punkt wypadowy do odkrywania Liptowa.",
     "ctaText": "Zobacz apartamenty",
     "secondaryCtaText": "Skontaktuj się z nami"
   },
@@ -82,8 +82,6 @@
     "billiards": "Bilard",
     "darts": "Rzutki",
     "tableFootball": "Piłkarzyki",
-    "sauna": "Sauna",
-    "saunaPrice": "25€ / dzień",
     "hotTub": "Jacuzzi",
     "hotTubPrice": "25€ / dzień",
     "breakfast": "Śniadanie",

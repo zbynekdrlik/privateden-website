@@ -1048,13 +1048,6 @@ collections:
                   widget: "string",
                   i18n: true,
                 }
-              - { label: "Sauna", name: "sauna", widget: "string", i18n: true }
-              - {
-                  label: "Cena sauna",
-                  name: "saunaPrice",
-                  widget: "string",
-                  i18n: true,
-                }
               - {
                   label: "Vírivka",
                   name: "hotTub",

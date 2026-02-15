@@ -15,7 +15,7 @@
   "hero": {
     "title": "Privát Eden",
     "subtitle": "Perfect retreat in the heart of Liptov",
-    "description": "Family accommodation in the picturesque village of Pavlova Ves. 5 comfortable apartments, sauna, hot tub and children's paradise — the ideal base for exploring the Liptov region.",
+    "description": "Family accommodation in the picturesque village of Pavlova Ves. 5 comfortable apartments, hot tub and children's paradise — the ideal base for exploring the Liptov region.",
     "ctaText": "View apartments",
     "secondaryCtaText": "Contact us"
   },
@@ -82,8 +82,6 @@
     "billiards": "Billiards",
     "darts": "Darts",
     "tableFootball": "Table football",
-    "sauna": "Sauna",
-    "saunaPrice": "25€ / day",
     "hotTub": "Hot tub",
     "hotTubPrice": "25€ / day",
     "breakfast": "Breakfast",
