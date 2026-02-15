@@ -12,10 +12,13 @@
     "contact": "Kontakt",
     "bookNow": "Zarezerwuj"
   },
+  "seo": {
+    "keywords": "noclegi liptów, apartamenty pavlova ves, noclegi liptowski mikulasz, noclegi przy tatralandii, privat eden, rodzinne noclegi liptów, jacuzzi noclegi, wakacje liptów, apartamenty liptów"
+  },
   "hero": {
     "title": "Privat Eden",
     "subtitle": "Idealny wypoczynek w sercu Liptowa",
-    "description": "Rodzinne zakwaterowanie w malowniczej wiosce Pavlova Ves. 5 komfortowych apartamentów, jacuzzi i raj dla dzieci — idealny punkt wypadowy do odkrywania Liptowa.",
+    "description": "Rodzinne zakwaterowanie w Pavlovej Vsi koło Liptowskiego Mikułasza. 5 komfortowych apartamentów, jacuzzi i raj dla dzieci — tylko 5 minut od Tatralandii. Idealny punkt wypadowy do odkrywania Liptowa.",
     "ctaText": "Zobacz apartamenty",
     "secondaryCtaText": "Skontaktuj się z nami"
   },

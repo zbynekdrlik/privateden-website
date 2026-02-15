@@ -12,10 +12,13 @@
     "contact": "Kontakt",
     "bookNow": "Rezervovať"
   },
+  "seo": {
+    "keywords": "ubytovanie liptov, apartmány pavlova ves, ubytovanie liptovský mikuláš, ubytovanie pri tatralandii, privat eden, rodinné ubytovanie liptov, vírivka ubytovanie, dovolenka liptov, apartmány liptov"
+  },
   "hero": {
     "title": "Privat Eden",
     "subtitle": "Dokonalý oddych v srdci Liptova",
-    "description": "Rodinné ubytovanie v malebnej dedinke Pavlova Ves. 5 komfortných apartmánov, vírivka a detský raj — ideálny východiskový bod pre objavovanie Liptova.",
+    "description": "Rodinné ubytovanie v Pavlovej Vsi pri Liptovskom Mikuláši. 5 komfortných apartmánov, vírivka a detský raj — len 5 minút od Tatralandie. Ideálny východiskový bod pre objavovanie Liptova.",
     "ctaText": "Pozrieť apartmány",
     "secondaryCtaText": "Kontaktovať nás"
   },
