@@ -25,11 +25,18 @@ const featuredAttractions = attractionsData.attractions.slice(0, 3);
   {heroData.enabled && (
     <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <div class="absolute inset-0">
-        <img
-          src={heroData.heroImage}
-          alt="Privat Eden"
-          class="w-full h-full object-cover"
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcset="/images/hero-mobile.webp" type="image/webp" />
+          <source srcset="/images/hero-desktop.webp" type="image/webp" />
+          <img
+            src={heroData.heroImage}
+            alt="Privat Eden - ubytovanie Pavlova Ves, Liptov"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <div class="absolute inset-0 bg-black/50"></div>
       </div>
       <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white" style="text-shadow: 0 1px 3px rgba(0,0,0,0.5);">
